@@ -1,0 +1,77 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manny_Thigh_Right/Manny_LowerLeg_Right/Manny_Foot_Right:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -1.68141, 27.4408, 22.9535, 18.3, 24.9697, 19.8989, 34.6062, 23.919, 7.37135 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Manny_Thigh_Right/Manny_LowerLeg_Right:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -336.745, -314.947, -303.805, -308.97, -347.332, -345.586, -345.586, -331.632, -329.866 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Manny_Thigh_Right:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -9.57086, -10.1138, -22.3657, -32.638, -38.8712, -47.2606, -47.2606, -47.9665, -30.6247 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Manny_Thigh_Left/Manny_LowerLeg_Left/Manny_Foot_Left:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.70337, 10.1686, 10.6846, -3.09104, -5.6743, -12.4715, 1.25416, 8.5571, -12.4355 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Manny_Thigh_Left/Manny_LowerLeg_Left:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 12.671, 26.558, 12.0741, 13.8405, 4.06576, 23.271, 44.6793, 35.2173, 40.4367 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Manny_Thigh_Left:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -38.8728, -35.8799, -24.7281, -15.535, -0.773603, -9.58051, -14.6671, -3.02485, -9.001 ]
+}

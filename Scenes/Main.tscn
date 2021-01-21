@@ -69,3 +69,4 @@ position = Vector2( 0, 119 )
 shape = SubResource( 1 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
+CurrentOverlay = 1

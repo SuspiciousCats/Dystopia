@@ -16,9 +16,11 @@
       <e p="Entities" t="Include">
         <e p="BodyPart.cs" t="Include" />
         <e p="Character.cs" t="Include" />
+        <e p="Weapons" t="Include">
+          <e p="WeaponBase.cs" t="Include" />
+        </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Scenes" t="Include" />
     </e>
     <e p="C:\Users\MetalCat\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
     <e p="C:\Users\MetalCat\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_.19.00" t="ExcludeRecursive" />

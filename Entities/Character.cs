@@ -1,14 +1,31 @@
+using Dystopia.Entities.Weapons;
 using Godot;
 
 namespace Dystopia.Entities
 {
 	public class Character : KinematicBody2D
 	{
+
+		public enum AnimationOverlayType
+		{
+			None,
+			Pistol,
+			Rifle
+		}
+
+		[Export] public bool IsControlledByPlayer = true;
+		
 		[Export] public float Speed = 100;
 
 		[Export] public float GravityForce = 980;
 
 		[Export] public float JumpForce = -450;
+
+		[Export(PropertyHint.File)] public string WeaponScene = "";
+
+		[Export(PropertyHint.Enum)] public AnimationOverlayType CurrentOverlay;
+
+		private Vector2 _aimLocation;
 
 		private bool isRunning = false;
 
@@ -16,27 +33,84 @@ namespace Dystopia.Entities
 	
 		private Vector2 _velocity = Vector2.Zero;
 
-		private BodyPart _lowerBodyNode;
+		private BodyPart _skeletalMesh;
 
-		private BodyPart _upperBodyNode;
+		protected Node2D _skeletalMesh_Torso;
+
+		private WeaponBase _weapon;
 
 		public bool IsRunning
 		{
 			get => isRunning;
 			set => isRunning = value;
 		}
-		
+
+		public Vector2 AimLocation
+		{
+			get => _aimLocation;
+			set => _aimLocation = value;
+		}
+
 		public virtual float GetCurrentSpeed()
 		{
 			return Speed * (isRunning ? 2 : 1);
 		}
 
+		public virtual string GetCurrentAnimation()
+		{
+			string animType = "";
+			if (Mathf.Abs(_velocity.x) > 0.01)
+			{
+				animType = (isRunning ? "Run" : "Walk");
+			}
+			else
+			{
+				animType =  "Idle";
+			}
+
+			if (CurrentOverlay == AnimationOverlayType.None)
+			{
+				if (Mathf.Abs(_velocity.x) > 0.01)
+				{
+					return (isRunning ? "Run" : "Walk");
+				}
+				else
+				{
+					return "Idle";
+				}
+			}
+
+			if (CurrentOverlay == AnimationOverlayType.Pistol)
+			{
+				return "Pistol_" + animType;
+			}
+
+			if (CurrentOverlay == AnimationOverlayType.Rifle)
+			{
+				return "Rifle_" + animType;
+			}
+
+			return "None";
+
+		}
+
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			_lowerBodyNode = GetNode<BodyPart>("LowerBody");
+			_skeletalMesh = GetNode<BodyPart>("SkeletalMesh");
 
-			_upperBodyNode = GetNode<BodyPart>("UpperBody");
+			_skeletalMesh_Torso = _skeletalMesh.FindNode("Manny_Torso") as Node2D;
+
+			var scene = GD.Load<PackedScene>(WeaponScene);
+			if (scene != null)
+			{
+				_weapon = GD.Load<PackedScene>(WeaponScene).Instance() as WeaponBase;
+				if (_weapon != null)
+				{
+					_skeletalMesh.FindNode("Manny_Wrist_Right").AddChild(_weapon);
+				}
+			}
+			
 		}
 
 		protected virtual void GetInput()
@@ -60,42 +134,45 @@ namespace Dystopia.Entities
 			{
 				_velocity.y = JumpForce;
 			}
-
+			
+			
+			
 			isRunning = Input.IsActionPressed("move_run");
+		}
+
+		public override void _Input(InputEvent @event)
+		{
+			base._Input(@event);
+			if (@event is InputEventMouseMotion eventMouse)
+			{
+				_aimLocation = eventMouse.Position;
+			}
 		}
 
 		protected virtual void UpdateAnimation()
 		{
-			if (_lowerBodyNode != null && _upperBodyNode != null)
+			//set current direction
+			_isLookingLeft = (_aimLocation.x - GetViewport().Size.x / 2) > 0;
+			
+			if (_skeletalMesh != null)
 			{
-				if (Mathf.Abs(_velocity.x) >= 0.01)
-				{
-					//update current animation
-					_lowerBodyNode.SetAnimation(isRunning ? "Run" : "Walk");
-					_lowerBodyNode.Scale = new Vector2(_lowerBodyNode.Scale.x * (_isLookingLeft ? -1 : 1),
-					_lowerBodyNode.Scale.y);_upperBodyNode.SetAnimation(isRunning ? "Run" : "Walk");
-
-					//set current direction
-					_isLookingLeft = _velocity.x > 0;
-					
-				}
-				else
-				{
-					_lowerBodyNode.SetAnimation("None");
-					_upperBodyNode.SetAnimation("None");
-				}
-
-				if (!_lowerBodyNode.Animation.IsPlaying())
-				{
-					_lowerBodyNode.Animation.Play();
-				}
-
-				_lowerBodyNode.Scale = new Vector2(Mathf.Abs(_lowerBodyNode.Scale.x) * (_isLookingLeft ? 1 : -1),
-					_lowerBodyNode.Scale.y);
-
-				_upperBodyNode.Scale = new Vector2(Mathf.Abs(_upperBodyNode.Scale.x) * (_isLookingLeft ? 1 : -1),
-					_upperBodyNode.Scale.y);
+				_skeletalMesh.SetAnimation(GetCurrentAnimation());
 				
+				_skeletalMesh.Scale = new Vector2(Mathf.Abs(_skeletalMesh.Scale.x) * (_isLookingLeft ? 1 : -1),
+						_skeletalMesh.Scale.y);
+				
+
+				if (!_skeletalMesh.Animation.IsPlaying())
+				{
+					_skeletalMesh.Animation.Play();
+				}
+
+				if (_skeletalMesh_Torso != null)
+				{
+					_skeletalMesh_Torso.LookAt(_aimLocation - GetViewport().Size/2);
+					
+					_skeletalMesh_Torso.RotationDegrees += 15;
+				}
 			}
 			
 		}
@@ -104,8 +181,11 @@ namespace Dystopia.Entities
 		{
 			base._PhysicsProcess(delta);
 			
-			GetInput();
-			
+			if (IsControlledByPlayer)
+			{
+				GetInput();
+			}
+
 			_velocity.y += GravityForce * delta;
 			
 			if (IsOnFloor())

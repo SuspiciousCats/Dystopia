@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PistolB_Fire04.WAV-3143bac22c8319ae66c95dfa4f7f6fe7.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Weapons/PistolB_Fire04.WAV"
+dest_files=[ "res://.import/PistolB_Fire04.WAV-3143bac22c8319ae66c95dfa4f7f6fe7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

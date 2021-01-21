@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PistolB_Fire_ST06.WAV-4963006c85f144f0173d640623759d7d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Weapons/PistolB_Fire_ST06.WAV"
+dest_files=[ "res://.import/PistolB_Fire_ST06.WAV-4963006c85f144f0173d640623759d7d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

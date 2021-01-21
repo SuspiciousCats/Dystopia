@@ -134,7 +134,14 @@ namespace Dystopia.Entities
 			{
 				_velocity.y = JumpForce;
 			}
-			
+
+			if (Input.IsActionPressed("shoot"))
+			{
+				if (_weapon != null)
+				{
+					_weapon.Shoot();
+				}
+			}
 			
 			
 			isRunning = Input.IsActionPressed("move_run");

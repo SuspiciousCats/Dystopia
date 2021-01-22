@@ -43,5 +43,17 @@ namespace Dystopia.Entities.Bullet
 						delta *
 						Speed;
 		}
+
+		private void _on_Bullet_body_entered(object body)
+		{
+			if (body is Character character && body != OwningCharacter)
+			{
+				character.DealDamage(OwningWeapon.Damage);
+				QueueFree();
+			}
+		}
 	}
 }
+
+
+

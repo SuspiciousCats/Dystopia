@@ -70,3 +70,8 @@ shape = SubResource( 1 )
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 CurrentOverlay = 1
+
+[node name="Character2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -100, 62 )
+IsControlledByPlayer = false
+CurrentOverlay = 1

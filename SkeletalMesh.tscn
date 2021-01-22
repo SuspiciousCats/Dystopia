@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Parts/Manny_Torso.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Parts/Manny_UpperArm_Right.png" type="Texture" id=2]
@@ -18,7 +18,370 @@
 [ext_resource path="res://Assets/Parts/Manny_Foot_Right.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Idle"
+resource_name = "Death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left/Manny_Wrist_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left/Manny_Wrist_Left:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4.96469 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 6 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -0.442329 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, -7 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.4843 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right/Manny_LowerArm_Right/Manny_Wrist_Right:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.6345, 6.8735 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right/Manny_LowerArm_Right/Manny_Wrist_Right:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 42.398 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right/Manny_LowerArm_Right:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 7 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right/Manny_LowerArm_Right:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -365.779 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, -8 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Right:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 355.251 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Manny_Hip/Manny_Thigh_Left/Manny_LowerLeg_Left/Manny_Foot_Left:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, 9 ), Vector2( -4, 9 ), Vector2( -4, 9 ), Vector2( -4, 9 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Manny_Hip/Manny_Thigh_Left/Manny_LowerLeg_Left/Manny_Foot_Left:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 6.77018, -76.273, -76.273, 6.39333 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Manny_Hip/Manny_Thigh_Left/Manny_LowerLeg_Left:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 9 ), Vector2( 0, 9 ), Vector2( 0, 9 ), Vector2( 0, 9 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Manny_Hip/Manny_Thigh_Left/Manny_LowerLeg_Left:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 15.5937, 72.0611, 38.0987, -1.03323 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Manny_Hip/Manny_Thigh_Left:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 0 ), Vector2( 1, 0 ), Vector2( 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Manny_Hip/Manny_Thigh_Left:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -19.7781, 0.354657, 0.354657, 0.355494 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Manny_Hip/Manny_Thigh_Right/Manny_LowerLeg_Right/Manny_Foot_Right:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, 9 ), Vector2( -4, 9 ), Vector2( -4, 9 ), Vector2( -4, 9 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Manny_Hip/Manny_Thigh_Right/Manny_LowerLeg_Right/Manny_Foot_Right:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -4.05903, -88.7574, -88.7574, 1.65115 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Manny_Hip/Manny_Thigh_Right/Manny_LowerLeg_Right:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 9 ), Vector2( 0, 9 ), Vector2( 0, 9 ), Vector2( 0, 9 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Manny_Hip/Manny_Thigh_Right/Manny_LowerLeg_Right:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -349.709, -250.225, -293.355, -364.502 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Manny_Hip/Manny_Thigh_Right:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -3, 1 ), Vector2( -3, 1 ), Vector2( -3, 1 ), Vector2( -3, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Manny_Hip/Manny_Thigh_Right:rotation_degrees")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 352.917, 338.131, 338.131, 357.234 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Manny_Hip/Manny_Torso/Manny_Head:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, -9 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Manny_Hip/Manny_Torso/Manny_Head:rotation_degrees")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -2.19936 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Manny_Hip/Manny_Torso:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -2.86667 ), Vector2( 1, -2.86667 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Manny_Hip/Manny_Torso:rotation_degrees")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.19935, 20.0298 ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Manny_Hip:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 6 ), Vector2( 0, 9 ) ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Manny_Hip:rotation_degrees")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 81.1575 ]
+}
+
+[sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left/Manny_Wrist_Left:rotation_degrees")
@@ -189,7 +552,7 @@ tracks/13/keys = {
 "values": [ -19.7781 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left/Manny_Wrist_Left:rotation_degrees")
 tracks/0/interp = 1
@@ -507,7 +870,7 @@ tracks/13/keys = {
 "values": [ Vector2( 1, -2.70962 ), Vector2( 1, -2 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 0.8
 loop = true
 step = 0.0
@@ -741,7 +1104,7 @@ __meta__ = {
 
 [node name="Manny_UpperArm_Right" type="Sprite" parent="Manny_Hip/Manny_Torso"]
 position = Vector2( -5, -8 )
-rotation = 5.58593
+rotation = 6.2003
 z_index = 2
 texture = ExtResource( 2 )
 offset = Vector2( -2, 4 )
@@ -752,7 +1115,7 @@ __meta__ = {
 
 [node name="Manny_LowerArm_Right" type="Sprite" parent="Manny_Hip/Manny_Torso/Manny_UpperArm_Right"]
 position = Vector2( -3, 7 )
-rotation = -7.04865
+rotation = -6.38405
 z_index = 3
 texture = ExtResource( 5 )
 offset = Vector2( 0, 3 )
@@ -778,7 +1141,7 @@ __meta__ = {
 
 [node name="Manny_UpperArm_Left" type="Sprite" parent="Manny_Hip/Manny_Torso"]
 position = Vector2( 3, -7 )
-rotation = -0.613672
+rotation = -0.270252
 z_index = -2
 texture = ExtResource( 7 )
 offset = Vector2( -2, 4 )
@@ -789,7 +1152,7 @@ __meta__ = {
 
 [node name="Manny_LowerArm_Left" type="Sprite" parent="Manny_Hip/Manny_Torso/Manny_UpperArm_Left"]
 position = Vector2( -3, 6 )
-rotation = -1.66176
+rotation = -0.0077201
 z_index = -2
 texture = ExtResource( 8 )
 offset = Vector2( 0, 3 )
@@ -799,7 +1162,7 @@ __meta__ = {
 
 [node name="Manny_Wrist_Left" type="Sprite" parent="Manny_Hip/Manny_Torso/Manny_UpperArm_Left/Manny_LowerArm_Left"]
 position = Vector2( 0, 7 )
-rotation = 2.08412
+rotation = 0.0866502
 z_index = -2
 texture = ExtResource( 9 )
 offset = Vector2( 1, 1 )
@@ -831,7 +1194,7 @@ __meta__ = {
 
 [node name="Manny_Foot_Right" type="Sprite" parent="Manny_Hip/Manny_Thigh_Right/Manny_LowerLeg_Right"]
 position = Vector2( -4, 9 )
-rotation = -0.0708435
+rotation = -0.0708434
 texture = ExtResource( 16 )
 offset = Vector2( 1, 1 )
 __meta__ = {
@@ -856,7 +1219,7 @@ __meta__ = {
 
 [node name="Manny_LowerLeg_Left" type="Sprite" parent="Manny_Hip/Manny_Thigh_Left"]
 position = Vector2( 0, 9 )
-rotation = 0.272162
+rotation = 0.272161
 z_index = -1
 texture = ExtResource( 13 )
 offset = Vector2( -1, 4 )
@@ -881,8 +1244,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 1 )
-anims/Pistol_Idle = SubResource( 2 )
+anims/Death = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Pistol_Idle = SubResource( 3 )
 anims/Pistol_Walk = SubResource( 4 )
-anims/Run = SubResource( 3 )
+anims/Run = SubResource( 5 )
 anims/Walk = SubResource( 4 )

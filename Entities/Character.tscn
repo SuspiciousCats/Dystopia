@@ -9,6 +9,7 @@
 script = ExtResource( 3 )
 Speed = 200.0
 WeaponScene = "res://Entities/Weapons/WeaponBase.tscn"
+CurrentOverlay = 1
 
 [node name="SkeletalMesh" parent="." instance=ExtResource( 2 )]
 
@@ -16,5 +17,4 @@ WeaponScene = "res://Entities/Weapons/WeaponBase.tscn"
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 zoom = Vector2( 0.4, 0.4 )

@@ -21,9 +21,13 @@ namespace Dystopia.Entities
 
 		[Export] public float JumpForce = -450;
 
+		[Export(PropertyHint.Range, "0")] public float Health = 100;
+
 		[Export(PropertyHint.File)] public string WeaponScene = "";
 
 		[Export(PropertyHint.Enum)] public AnimationOverlayType CurrentOverlay;
+
+		private bool _dead = false;
 
 		private Vector2 _aimLocation;
 
@@ -111,7 +115,11 @@ namespace Dystopia.Entities
 					_skeletalMesh.FindNode("Manny_Wrist_Right").AddChild(_weapon);
 				}
 			}
-			
+
+			if (IsControlledByPlayer)
+			{
+				GetNode<Camera2D>("Camera2D").Current = true;
+			}
 		}
 
 		protected virtual void GetInput()
@@ -150,10 +158,31 @@ namespace Dystopia.Entities
 
 		public override void _Input(InputEvent @event)
 		{
-			base._Input(@event);
-			if (@event is InputEventMouseMotion eventMouse)
+			if (IsControlledByPlayer && !_dead)
 			{
-				_aimLocation = eventMouse.Position;
+				base._Input(@event);
+				if (@event is InputEventMouseMotion eventMouse)
+				{
+					_aimLocation = eventMouse.Position;
+				}
+			}
+		}
+
+		public void Die()
+		{
+			if (!_dead)
+			{
+				_skeletalMesh.SetAnimation("Death");
+				_dead = true;
+			}
+		}
+
+		public void DealDamage(float damage)
+		{
+			Health -= damage;
+			if (Health <= 0)
+			{
+				Die();
 			}
 		}
 
@@ -189,7 +218,7 @@ namespace Dystopia.Entities
 		{
 			base._PhysicsProcess(delta);
 			
-			if (IsControlledByPlayer)
+			if (IsControlledByPlayer && !_dead)
 			{
 				GetInput();
 			}
@@ -203,8 +232,11 @@ namespace Dystopia.Entities
 
 			_velocity = MoveAndSlide(_velocity);
 
-			UpdateAnimation();
-			
+			if (!_dead)
+			{
+				UpdateAnimation();
+			}
+
 		}
 	}
 }

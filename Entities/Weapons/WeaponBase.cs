@@ -11,6 +11,8 @@ namespace Dystopia.Entities.Weapons
 
 		[Export()] public float CooldownTime = 1;
 
+		[Export()] public float Damage = 20;
+
 		public Character OwningCharacter;
 
 		protected Timer CooldownTimer;

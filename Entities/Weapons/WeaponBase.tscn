@@ -15,5 +15,6 @@ frames = ExtResource( 1 )
 script = ExtResource( 2 )
 FireSounds = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ]
 BulletPath = "res://Entities/Bullet/Bullet.tscn"
+Damage = 80.0
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]

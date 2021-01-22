@@ -107,6 +107,7 @@ namespace Dystopia.Entities
 				_weapon = GD.Load<PackedScene>(WeaponScene).Instance() as WeaponBase;
 				if (_weapon != null)
 				{
+					_weapon.OwningCharacter = this;
 					_skeletalMesh.FindNode("Manny_Wrist_Right").AddChild(_weapon);
 				}
 			}
@@ -139,7 +140,7 @@ namespace Dystopia.Entities
 			{
 				if (_weapon != null)
 				{
-					_weapon.Shoot();
+					_weapon.Shoot(_weapon.Position + Position, _skeletalMesh_Torso.Rotation,_isLookingLeft);
 				}
 			}
 			

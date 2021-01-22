@@ -14,5 +14,6 @@ scale = Vector2( 0.125, 0.125 )
 frames = ExtResource( 1 )
 script = ExtResource( 2 )
 FireSounds = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ]
+BulletPath = "res://Entities/Bullet/Bullet.tscn"
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]

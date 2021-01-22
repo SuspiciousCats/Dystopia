@@ -15,6 +15,9 @@
       <e p="Dystopia.csproj" t="IncludeRecursive" />
       <e p="Entities" t="Include">
         <e p="BodyPart.cs" t="Include" />
+        <e p="Bullet" t="Include">
+          <e p="Bullet.cs" t="Include" />
+        </e>
         <e p="Character.cs" t="Include" />
         <e p="Weapons" t="Include">
           <e p="WeaponBase.cs" t="Include" />

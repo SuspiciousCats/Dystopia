@@ -12,6 +12,7 @@
       <option value="$PROJECT_DIR$/Scenes/Character.cs" />
       <option value="$PROJECT_DIR$/Entities/BodyPart.cs" />
       <option value="$PROJECT_DIR$/Entities/Character.cs" />
+      <option value="$PROJECT_DIR$/Entities/Bullet/Bullet.cs" />
       <option value="$PROJECT_DIR$/Entities/Weapons/WeaponBase.cs" />
     </changedPaths>
   </component>

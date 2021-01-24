@@ -5,8 +5,9 @@
 
 [node name="Animation" type="AnimatedSprite"]
 frames = ExtResource( 1 )
-animation = "Idle_None"
+animation = "Death"
 script = ExtResource( 2 )
 
 [node name="BulletSpawnPosition" type="Position2D" parent="."]
+position = Vector2( 21, -12 )
 [connection signal="animation_finished" from="." to="." method="_on_Animation_animation_finished"]

@@ -14,6 +14,10 @@ namespace Dystopia.Entities
 
 		[Export] public float JumpForce = -450;
 
+		[Export(PropertyHint.Layers2dPhysics)] public uint DeadCollisionLayer;
+
+		[Export(PropertyHint.Layers2dPhysics)] public uint DeadCollisionMask;
+
 		[Export(PropertyHint.Range, "0")] public float Health = 100;
 
 		[Export(PropertyHint.File)] public string WeaponScene = "";
@@ -140,7 +144,14 @@ namespace Dystopia.Entities
 			{
 				if (_weapon != null)
 				{
-					_weapon.Shoot(_animation.BulletSpawnPosition.Position + Position, 0, _isLookingLeft);
+					_weapon.Shoot(
+						new Vector2
+							(
+							(_animation.BulletSpawnPosition.Position.x*(_isLookingLeft ? 1 : -1)) + Position.x,
+							_animation.BulletSpawnPosition.Position.y + Position.y
+							),
+							0,
+						_isLookingLeft);
 				}
 			}
 
@@ -174,8 +185,12 @@ namespace Dystopia.Entities
 		{
 			if (!Dead)
 			{
-				//TODO: Add death animation
 				Dead = true;
+				
+				_animation.PlayMontage("Death");
+
+				CollisionLayer = DeadCollisionLayer;
+				CollisionMask = DeadCollisionMask;
 			}
 		}
 

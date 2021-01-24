@@ -84,7 +84,7 @@ namespace Dystopia.Entities.Weapons
 					
 					bullet.SpawnPosition = location;
 
-					bullet.SpawnRotation = rotation;
+					//bullet.SpawnRotation = rotation;
 
 					OwningCharacter.GetParent().AddChild(bullet);
 				}

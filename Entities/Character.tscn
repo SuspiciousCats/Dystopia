@@ -9,6 +9,8 @@ height = 28.0
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 3 )
 Speed = 200.0
+DeadCollisionLayer = 2
+DeadCollisionMask = 2
 WeaponScene = "res://Entities/Weapons/WeaponBase.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

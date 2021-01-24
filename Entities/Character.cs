@@ -67,13 +67,22 @@ namespace Dystopia.Entities
 		public virtual string GetCurrentAnimation()
 		{
 			string animType = "";
-			if (Mathf.Abs(_velocity.x) > 0.01)
+			if (Mathf.Abs(_velocity.x) > 0.01 && IsOnFloor())
 			{
 				animType = "Walk";
 			}
-			else
+			else if(IsOnFloor())
 			{
 				animType = "Idle";
+			}
+
+			if (!IsOnFloor() && _velocity.y < -0.01)
+			{
+				animType = "Jump";
+			}
+			else if (!IsOnFloor())
+			{
+				animType = "Fall";
 			}
 
 			return animType +"_"+ _weapon.Type.ToString();

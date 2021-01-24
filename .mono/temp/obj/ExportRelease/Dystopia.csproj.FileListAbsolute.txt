@@ -1,0 +1,8 @@
+C:\GodotProjects\Dystopia\.mono\temp\bin\ExportRelease\Dystopia.dll
+C:\GodotProjects\Dystopia\.mono\temp\bin\ExportRelease\Dystopia.pdb
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.csprojAssemblyReference.cache
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.AssemblyInfoInputs.cache
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.AssemblyInfo.cs
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.csproj.CoreCompileInputs.cache
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.dll
+C:\GodotProjects\Dystopia\.mono\temp\obj\ExportRelease\Dystopia.pdb

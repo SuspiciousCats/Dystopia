@@ -46,6 +46,5 @@ IsControlledByPlayer = false
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( -148, 66 )
 frames = ExtResource( 4 )
-animation = "Walk_Pistol"
-frame = 9
+animation = "Pickup_Floor"
 playing = true

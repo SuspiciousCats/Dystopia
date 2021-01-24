@@ -14,6 +14,9 @@
       </e>
       <e p="Dystopia.csproj" t="IncludeRecursive" />
       <e p="Entities" t="Include">
+        <e p="AI" t="Include">
+          <e p="AIBase.cs" t="Include" />
+        </e>
         <e p="Animation" t="Include">
           <e p="Animation.cs" t="Include" />
         </e>

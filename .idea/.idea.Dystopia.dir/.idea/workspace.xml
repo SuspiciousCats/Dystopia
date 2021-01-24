@@ -15,6 +15,7 @@
       <option value="$PROJECT_DIR$/Entities/Animation/Animation.cs" />
       <option value="$PROJECT_DIR$/Entities/Weapons/WeaponBase.cs" />
       <option value="$PROJECT_DIR$/Entities/Character.cs" />
+      <option value="$PROJECT_DIR$/Entities/AI/AIBase.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nJxcr0xXnxBOnbTwLvldxOobwE" />

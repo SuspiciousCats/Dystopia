@@ -5,7 +5,12 @@ namespace Dystopia.Entities
 {
 	public class Character : KinematicBody2D
 	{
-
+		public enum Team
+		{
+			Player,
+			Solders
+		}
+		
 		[Export] public bool IsControlledByPlayer = true;
 		
 		[Export] public float Speed = 100;
@@ -22,6 +27,8 @@ namespace Dystopia.Entities
 
 		[Export(PropertyHint.File)] public string WeaponScene = "";
 
+		[Export(PropertyHint.Enum)] public Team CharacterTeam = Team.Player;
+
 		protected bool Reloading = false;
 
 		private bool _dead = false;
@@ -30,14 +37,14 @@ namespace Dystopia.Entities
 
 		private bool isRunning = false;
 
-		private bool _isLookingLeft = false;
+		protected bool _isLookingLeft = false;
 	
 		private Vector2 _velocity = Vector2.Zero;
 
-		private Animation.Animation _animation;
+		protected Animation.Animation _animation;
 
-		private WeaponBase _weapon;
-		
+		protected WeaponBase _weapon;
+
 		private bool _jumpButtonDown = false;
 
 		public bool IsPlayingAnyMontage()
@@ -142,17 +149,14 @@ namespace Dystopia.Entities
 
 			if (Input.IsActionPressed("shoot"))
 			{
-				if (_weapon != null)
-				{
-					_weapon.Shoot(
-						new Vector2
-							(
-							(_animation.BulletSpawnPosition.Position.x*(_isLookingLeft ? 1 : -1)) + Position.x,
-							_animation.BulletSpawnPosition.Position.y + Position.y
-							),
-							0,
-						_isLookingLeft);
-				}
+				_weapon?.Shoot(
+					new Vector2
+					(
+						(_animation.BulletSpawnPosition.Position.x*(_isLookingLeft ? 1 : -1)) + Position.x,
+						_animation.BulletSpawnPosition.Position.y + Position.y
+					),
+					0,
+					_isLookingLeft);
 			}
 
 			if (Input.IsActionPressed("reload") && !Reloading && _weapon != null)

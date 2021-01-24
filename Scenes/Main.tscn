@@ -47,4 +47,5 @@ IsControlledByPlayer = false
 position = Vector2( -148, 66 )
 frames = ExtResource( 4 )
 animation = "Pickup_Floor"
+frame = 11
 playing = true

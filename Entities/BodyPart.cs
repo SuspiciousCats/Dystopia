@@ -37,7 +37,7 @@ namespace Dystopia.Entities
 		{
 			if (OwningCharacter != null)
 			{
-				OwningCharacter.OnAnimationEnd(anim_name);
+				
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace Dystopia.Entities
 		{
 			if (OwningCharacter != null)
 			{
-				OwningCharacter.OnAnimationInterrupt(old_name);
+			
 			}
 		}
 	}

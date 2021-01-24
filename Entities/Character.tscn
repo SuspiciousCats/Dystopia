@@ -1,21 +1,23 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://SkeletalMesh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Entities/Animation/Animation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Character.cs" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
+height = 28.0
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 3 )
 Speed = 200.0
-JumpForce = -450.0
 WeaponScene = "res://Entities/Weapons/WeaponBase.tscn"
-CurrentOverlay = 1
-
-[node name="SkeletalMesh" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2( 0.4, 0.4 )
+
+[node name="Animation" parent="." instance=ExtResource( 1 )]
+position = Vector2( 2, -6 )
+[connection signal="OnMontageFinished" from="Animation" to="." method="_on_Animation_OnMontageFinished"]
+[connection signal="OnMontageInterrupted" from="Animation" to="." method="_on_Animation_OnMontageInterrupted"]

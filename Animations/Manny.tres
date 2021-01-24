@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=195 format=2]
+[gd_resource type="SpriteFrames" load_steps=213 format=2]
 
 [ext_resource path="res://Animations/Manny_Walk_Pistol-sheet.png" type="Texture" id=1]
 [ext_resource path="res://Animations/Manny_Idle_.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Animations/Manny_Fall_Pistol-sheet.png" type="Texture" id=7]
 [ext_resource path="res://Animations/Manny_Fall_None-sheet.png" type="Texture" id=8]
 [ext_resource path="res://Animations/Manny_Pickup_All-sheet.png" type="Texture" id=9]
+[ext_resource path="res://Animations/Manny_Reload_Pistol-sheet.png" type="Texture" id=10]
 
 [sub_resource type="AtlasTexture" id=97]
 atlas = ExtResource( 3 )
@@ -674,6 +675,74 @@ region = Rect2( 384, 448, 64, 64 )
 atlas = ExtResource( 2 )
 region = Rect2( 448, 448, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=218]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=219]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=220]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=221]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=222]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=223]
+atlas = ExtResource( 10 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=224]
+atlas = ExtResource( 10 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=225]
+atlas = ExtResource( 10 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=226]
+atlas = ExtResource( 10 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=227]
+atlas = ExtResource( 10 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=228]
+atlas = ExtResource( 10 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=229]
+atlas = ExtResource( 10 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=230]
+atlas = ExtResource( 10 )
+region = Rect2( 768, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=231]
+atlas = ExtResource( 10 )
+region = Rect2( 832, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=232]
+atlas = ExtResource( 10 )
+region = Rect2( 896, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=233]
+atlas = ExtResource( 10 )
+region = Rect2( 960, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=234]
+atlas = ExtResource( 10 )
+region = Rect2( 1024, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=199]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 64, 64 )
@@ -787,13 +856,18 @@ animations = [ {
 "name": "Idle_None",
 "speed": 15.0
 }, {
+"frames": [ SubResource( 218 ), SubResource( 219 ), SubResource( 220 ), SubResource( 221 ), SubResource( 222 ), SubResource( 223 ), SubResource( 224 ), SubResource( 225 ), SubResource( 226 ), SubResource( 227 ), SubResource( 228 ), SubResource( 229 ), SubResource( 230 ), SubResource( 231 ), SubResource( 232 ), SubResource( 233 ), SubResource( 234 ) ],
+"loop": false,
+"name": "Reload_Pistol",
+"speed": 15.0
+}, {
 "frames": [ SubResource( 199 ), SubResource( 200 ), SubResource( 201 ), SubResource( 202 ), SubResource( 203 ), SubResource( 204 ), SubResource( 205 ) ],
 "loop": true,
 "name": "Fall_Pistol",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 206 ), SubResource( 207 ), SubResource( 208 ), SubResource( 209 ), SubResource( 210 ), SubResource( 211 ), SubResource( 212 ), SubResource( 213 ), SubResource( 214 ), SubResource( 215 ), SubResource( 216 ), SubResource( 217 ) ],
-"loop": true,
+"loop": false,
 "name": "Pickup_Floor",
 "speed": 15.0
 } ]

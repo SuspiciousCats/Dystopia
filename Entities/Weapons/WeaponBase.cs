@@ -5,6 +5,12 @@ namespace Dystopia.Entities.Weapons
 {
 	public class WeaponBase : AnimatedSprite
 	{
+		public enum WeaponType
+		{
+			None,
+			Pistol
+		}
+		
 		[Export(PropertyHint.File)] public Array<AudioStreamSample> FireSounds;
 
 		[Export(PropertyHint.File)] public AudioStreamSample EmptyMagazineSound;
@@ -16,6 +22,8 @@ namespace Dystopia.Entities.Weapons
 		[Export()] public float Damage = 20;
 
 		[Export()] public int AmmoPerClip = 15;
+
+		[Export(PropertyHint.Enum)] public WeaponType Type;
 
 		protected int CurrentAmmoInTheClip = 5;
 

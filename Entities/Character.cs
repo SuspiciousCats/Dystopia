@@ -6,13 +6,6 @@ namespace Dystopia.Entities
 	public class Character : KinematicBody2D
 	{
 
-		public enum AnimationOverlayType
-		{
-			None,
-			Pistol,
-			Rifle
-		}
-
 		[Export] public bool IsControlledByPlayer = true;
 		
 		[Export] public float Speed = 100;
@@ -24,8 +17,6 @@ namespace Dystopia.Entities
 		[Export(PropertyHint.Range, "0")] public float Health = 100;
 
 		[Export(PropertyHint.File)] public string WeaponScene = "";
-
-		[Export(PropertyHint.Enum)] public AnimationOverlayType CurrentOverlay;
 
 		protected bool Reloading = false;
 
@@ -39,9 +30,7 @@ namespace Dystopia.Entities
 	
 		private Vector2 _velocity = Vector2.Zero;
 
-		private BodyPart _skeletalMesh;
-
-		protected Node2D _skeletalMesh_Torso;
+		private Animation.Animation _animation;
 
 		private WeaponBase _weapon;
 		
@@ -80,56 +69,28 @@ namespace Dystopia.Entities
 			string animType = "";
 			if (Mathf.Abs(_velocity.x) > 0.01)
 			{
-				animType = (isRunning ? "Run" : "Walk");
+				animType = "Walk";
 			}
 			else
 			{
-				animType =  "Idle";
+				animType = "Idle";
 			}
 
-			if (CurrentOverlay == AnimationOverlayType.None)
-			{
-				if (Mathf.Abs(_velocity.x) > 0.01)
-				{
-					return (isRunning ? "Run" : "Walk");
-				}
-				else
-				{
-					return "Idle";
-				}
-			}
-
-			if (CurrentOverlay == AnimationOverlayType.Pistol)
-			{
-				return "Pistol_" + animType;
-			}
-
-			if (CurrentOverlay == AnimationOverlayType.Rifle)
-			{
-				return "Rifle_" + animType;
-			}
-
-			return "None";
-
+			return animType +"_"+ _weapon.Type.ToString();
 		}
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			_skeletalMesh = GetNode<BodyPart>("SkeletalMesh");
-
-			_skeletalMesh.OwningCharacter = this;
-
-			_skeletalMesh_Torso = _skeletalMesh.FindNode("Manny_Torso") as Node2D;
-
 			var scene = GD.Load<PackedScene>(WeaponScene);
+			_animation = GetNode<Animation.Animation>("Animation");
 			if (scene != null)
 			{
 				_weapon = GD.Load<PackedScene>(WeaponScene).Instance() as WeaponBase;
 				if (_weapon != null)
 				{
 					_weapon.OwningCharacter = this;
-					_skeletalMesh.FindNode("Manny_Wrist_Right").AddChild(_weapon);
+					AddChild(_weapon);
 				}
 			}
 
@@ -170,14 +131,18 @@ namespace Dystopia.Entities
 			{
 				if (_weapon != null)
 				{
-					_weapon.Shoot(_weapon.Position + Position, _skeletalMesh_Torso.Rotation,_isLookingLeft);
+					_weapon.Shoot(_animation.BulletSpawnPosition.Position + Position, 0, _isLookingLeft);
 				}
 			}
 
-			if (Input.IsActionPressed("reload") && !Reloading)
+			if (Input.IsActionPressed("reload") && !Reloading && _weapon != null)
 			{
 				Reloading = true;
-				_skeletalMesh.SetAnimation("Reload");
+				_animation.PlayMontage("Reload_"+_weapon.Type.ToString());
+			}
+			else if(Input.IsActionPressed("reload"))
+			{
+				GD.Print("Reloading: " + Reloading.ToString());
 			}
 			
 			
@@ -200,7 +165,7 @@ namespace Dystopia.Entities
 		{
 			if (!Dead)
 			{
-				_skeletalMesh.SetAnimation("Death");
+				//TODO: Add death animation
 				Dead = true;
 			}
 		}
@@ -216,27 +181,29 @@ namespace Dystopia.Entities
 
 		protected virtual void UpdateAnimation()
 		{
-			//set current direction
-			_isLookingLeft = (_aimLocation.x - GetViewport().Size.x / 2) > 0;
-			
-			if (_skeletalMesh != null)
+			if (_velocity.x > 0.01)
 			{
-				_skeletalMesh.SetAnimation(GetCurrentAnimation());
-				
-				_skeletalMesh.Scale = new Vector2(Mathf.Abs(_skeletalMesh.Scale.x) * (_isLookingLeft ? 1 : -1),
-						_skeletalMesh.Scale.y);
+				_isLookingLeft =  true;
+			}
+			else if (_velocity.x < -0.01)
+			{
+				_isLookingLeft = false;
+			}
+			
+			//set current direction
+			//_isLookingLeft = (_aimLocation.x - GetViewport().Size.x / 2) > 0;
+			
+			if (_animation != null)
+			{
+				_animation.SetAnimation(GetCurrentAnimation());
+
+				_animation.Scale = new Vector2(Mathf.Abs(_animation.Scale.x) * (_isLookingLeft ? 1 : -1),
+					_animation.Scale.y);
 				
 
-				if (!_skeletalMesh.Animation.IsPlaying())
+				if (!_animation.IsPlaying())
 				{
-					_skeletalMesh.Animation.Play();
-				}
-
-				if (_skeletalMesh_Torso != null)
-				{
-					_skeletalMesh_Torso.LookAt(_aimLocation - GetViewport().Size/2);
-					
-					_skeletalMesh_Torso.RotationDegrees += 15;
+					_animation.Play();
 				}
 			}
 			
@@ -261,28 +228,28 @@ namespace Dystopia.Entities
 				_velocity.y = JumpForce;
 			}
 
-			if (!Dead && !IsPlayingAnyMontage())
+			if (!Dead)
 			{
 				UpdateAnimation();
 			}
 		}
 
-		public virtual void OnAnimationEnd(string animName)
+		private void _on_Animation_OnMontageFinished(string montageName)
 		{
-			if (Reloading && animName == "Reload")
+			if (montageName == ("Reload_" + _weapon.Type.ToString()) && Reloading)
 			{
 				Reloading = false;
 				_weapon.Reload();
 			}
 		}
 
-		public virtual void OnAnimationInterrupt(string animName)
+		private void _on_Animation_OnMontageInterrupted(string montageName, int currentFrame)
 		{
-			if (Reloading && animName == "Reload")
+			if (montageName == ("Reload_" + _weapon.Type.ToString()) && Reloading)
 			{
 				Reloading = false;
-				_weapon.Reload();
 			}
 		}
+
 	}
 }

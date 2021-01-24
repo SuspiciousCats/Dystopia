@@ -48,8 +48,11 @@ namespace Dystopia.Entities.Bullet
 		{
 			if (body is Character character && body != OwningCharacter)
 			{
-				character.DealDamage(OwningWeapon.Damage);
-				QueueFree();
+				if (!character.Dead)
+				{
+					character.DealDamage(OwningWeapon.Damage);
+					QueueFree();
+				}
 			}
 		}
 	}

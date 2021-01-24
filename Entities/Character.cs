@@ -27,6 +27,8 @@ namespace Dystopia.Entities
 
 		[Export(PropertyHint.Enum)] public AnimationOverlayType CurrentOverlay;
 
+		protected bool Reloading = false;
+
 		private bool _dead = false;
 
 		private Vector2 _aimLocation;
@@ -42,6 +44,13 @@ namespace Dystopia.Entities
 		protected Node2D _skeletalMesh_Torso;
 
 		private WeaponBase _weapon;
+		
+		private bool _jumpButtonDown = false;
+
+		public bool IsPlayingAnyMontage()
+		{
+			return Reloading;
+		}
 
 		public bool IsRunning
 		{
@@ -53,6 +62,12 @@ namespace Dystopia.Entities
 		{
 			get => _aimLocation;
 			set => _aimLocation = value;
+		}
+
+		public bool Dead
+		{
+			get => _dead;
+			set => _dead = value;
 		}
 
 		public virtual float GetCurrentSpeed()
@@ -103,6 +118,8 @@ namespace Dystopia.Entities
 		{
 			_skeletalMesh = GetNode<BodyPart>("SkeletalMesh");
 
+			_skeletalMesh.OwningCharacter = this;
+
 			_skeletalMesh_Torso = _skeletalMesh.FindNode("Manny_Torso") as Node2D;
 
 			var scene = GD.Load<PackedScene>(WeaponScene);
@@ -120,6 +137,7 @@ namespace Dystopia.Entities
 			{
 				GetNode<Camera2D>("Camera2D").Current = true;
 			}
+			
 		}
 
 		protected virtual void GetInput()
@@ -139,9 +157,13 @@ namespace Dystopia.Entities
 				_velocity.x = 0;
 			}
 
-			if (Input.IsActionPressed("move_jump"))
+			if (Input.IsActionPressed("move_jump") )
 			{
-				_velocity.y = JumpForce;
+				_jumpButtonDown = true;
+			}
+			else
+			{
+				_jumpButtonDown = false;
 			}
 
 			if (Input.IsActionPressed("shoot"))
@@ -151,6 +173,12 @@ namespace Dystopia.Entities
 					_weapon.Shoot(_weapon.Position + Position, _skeletalMesh_Torso.Rotation,_isLookingLeft);
 				}
 			}
+
+			if (Input.IsActionPressed("reload") && !Reloading)
+			{
+				Reloading = true;
+				_skeletalMesh.SetAnimation("Reload");
+			}
 			
 			
 			isRunning = Input.IsActionPressed("move_run");
@@ -158,7 +186,7 @@ namespace Dystopia.Entities
 
 		public override void _Input(InputEvent @event)
 		{
-			if (IsControlledByPlayer && !_dead)
+			if (IsControlledByPlayer && !Dead)
 			{
 				base._Input(@event);
 				if (@event is InputEventMouseMotion eventMouse)
@@ -170,10 +198,10 @@ namespace Dystopia.Entities
 
 		public void Die()
 		{
-			if (!_dead)
+			if (!Dead)
 			{
 				_skeletalMesh.SetAnimation("Death");
-				_dead = true;
+				Dead = true;
 			}
 		}
 
@@ -217,26 +245,44 @@ namespace Dystopia.Entities
 		public override void _PhysicsProcess(float delta)
 		{
 			base._PhysicsProcess(delta);
-			
-			if (IsControlledByPlayer && !_dead)
+
+			if (IsControlledByPlayer && !Dead)
 			{
 				GetInput();
 			}
 
 			_velocity.y += GravityForce * delta;
-			
-			if (IsOnFloor())
+
+
+			_velocity = MoveAndSlide(_velocity,Vector2.Up);
+
+			if (IsOnFloor() && _jumpButtonDown)
 			{
-				_velocity.y = 0;
+				_velocity.y = JumpForce;
 			}
 
-			_velocity = MoveAndSlide(_velocity);
-
-			if (!_dead)
+			if (!Dead && !IsPlayingAnyMontage())
 			{
 				UpdateAnimation();
 			}
+		}
 
+		public virtual void OnAnimationEnd(string animName)
+		{
+			if (Reloading && animName == "Reload")
+			{
+				Reloading = false;
+				_weapon.Reload();
+			}
+		}
+
+		public virtual void OnAnimationInterrupt(string animName)
+		{
+			if (Reloading && animName == "Reload")
+			{
+				Reloading = false;
+				_weapon.Reload();
+			}
 		}
 	}
 }

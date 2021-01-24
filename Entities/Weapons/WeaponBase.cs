@@ -7,11 +7,17 @@ namespace Dystopia.Entities.Weapons
 	{
 		[Export(PropertyHint.File)] public Array<AudioStreamSample> FireSounds;
 
+		[Export(PropertyHint.File)] public AudioStreamSample EmptyMagazineSound;
+
 		[Export(PropertyHint.File)] public string BulletPath;
 
 		[Export()] public float CooldownTime = 1;
 
 		[Export()] public float Damage = 20;
+
+		[Export()] public int AmmoPerClip = 15;
+
+		protected int CurrentAmmoInTheClip = 5;
 
 		public Character OwningCharacter;
 
@@ -35,7 +41,7 @@ namespace Dystopia.Entities.Weapons
 		public virtual bool CanShoot()
 		{
 			return !_isCoolingDown && _bulletScene != null && OwningCharacter != null &&
-				   (CooldownTimer == null || CooldownTimer.IsStopped());
+				   (CooldownTimer == null || CooldownTimer.IsStopped()) && CurrentAmmoInTheClip > 0;
 		}
 		
 		public virtual void Shoot(Vector2 location,float rotation,bool isGoingLeft)
@@ -74,11 +80,26 @@ namespace Dystopia.Entities.Weapons
 
 					OwningCharacter.GetParent().AddChild(bullet);
 				}
+
+				CurrentAmmoInTheClip--;
 				
-				
+				if (CurrentAmmoInTheClip < 0)
+				{
+					CurrentAmmoInTheClip = 0;
+				}
+			}
+			else if (CurrentAmmoInTheClip == 0)
+			{
+				FireSoundPlayer.Stream = EmptyMagazineSound;
+				FireSoundPlayer.Play();
 			}
 		}
 
+		public virtual void Reload()
+		{
+			CurrentAmmoInTheClip = AmmoPerClip;
+		}
+		
 		protected virtual void ResetCooldownTimer()
 		{
 			_isCoolingDown = false;

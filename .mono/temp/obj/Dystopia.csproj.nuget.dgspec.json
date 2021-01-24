@@ -14,7 +14,7 @@
         "outputPath": "C:\\GodotProjects\\Dystopia\\.mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\MetalCat\\AppData\\Roaming\\NuGet\\NuGet.Config",

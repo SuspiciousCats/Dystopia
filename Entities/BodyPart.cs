@@ -11,6 +11,7 @@ namespace Dystopia.Entities
 			get => _animation;
 		}
 
+		public Character OwningCharacter; 
 		/*Safe way of changing the animation
 		 *Returns false if animation is not found
 		*/
@@ -31,5 +32,27 @@ namespace Dystopia.Entities
 			
 			_animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		}
+
+		private void _on_AnimationPlayer_animation_finished(string anim_name)
+		{
+			if (OwningCharacter != null)
+			{
+				OwningCharacter.OnAnimationEnd(anim_name);
+			}
+		}
+
+		private void _on_AnimationPlayer_animation_changed(string old_name, string new_name)
+		{
+			if (OwningCharacter != null)
+			{
+				OwningCharacter.OnAnimationInterrupt(old_name);
+			}
+		}
 	}
 }
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Weapons/PistolAnims.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Entities/Weapons/WeaponBase.cs" type="Script" id=2]
@@ -8,13 +8,18 @@
 [ext_resource path="res://Assets/Sounds/Weapons/PistolB_Fire04.WAV" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/Weapons/PistolB_Fire06.WAV" type="AudioStream" id=7]
 [ext_resource path="res://Assets/Sounds/Weapons/PistolB_Fire02.WAV" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/Weapons/pistol_empty.wav" type="AudioStream" id=9]
 
 [node name="Weapon" type="AnimatedSprite"]
+position = Vector2( 4, -1 )
 scale = Vector2( 0.125, 0.125 )
 frames = ExtResource( 1 )
 script = ExtResource( 2 )
 FireSounds = [ ExtResource( 8 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ]
+EmptyMagazineSound = ExtResource( 9 )
 BulletPath = "res://Entities/Bullet/Bullet.tscn"
+CooldownTime = 0.33
 Damage = 80.0
 
 [node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0

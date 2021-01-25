@@ -39,7 +39,7 @@ namespace Dystopia.Entities
 
 		protected bool _isLookingLeft = false;
 	
-		private Vector2 _velocity = Vector2.Zero;
+		protected Vector2 _velocity = Vector2.Zero;
 
 		protected Animation.Animation _animation;
 

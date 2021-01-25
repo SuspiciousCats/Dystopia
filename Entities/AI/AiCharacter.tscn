@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/AI/AIBase.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 13 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 3 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61, 23 )
@@ -9,12 +15,36 @@ extents = Vector2( 61, 23 )
 [node name="Character" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 Speed = 100.0
-DeadCollisionLayer = 0
-DeadCollisionMask = 0
 EnemyTeams = [ 0 ]
+
+[node name="PathDetection_Wall" type="Area2D" parent="." index="0"]
+collision_layer = 2
+collision_mask = 2
+__meta__ = {
+"_editor_description_": "If this trigger returns true then there is a wall in front of the ai->ai should turn around and move
+
+Attached to Animation so that it would turn with sprite"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathDetection_Wall" index="0"]
+position = Vector2( 21, 0 )
+shape = SubResource( 2 )
+
+[node name="PathDetection_Floor" type="Area2D" parent="." index="1"]
+__meta__ = {
+"_editor_description_": "If this trigger returns false there is no floor to walk on->->ai should turn around and move
+
+Attached to Animation so that it would turn with sprite"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathDetection_Floor" index="0"]
+position = Vector2( 21, 26 )
+shape = SubResource( 3 )
 
 [node name="Sense" type="Area2D" parent="Animation" index="1"]
 position = Vector2( -2, 6 )
+collision_layer = 4
+collision_mask = 4
 __meta__ = {
 "_editor_description_": "Area responsible for ai's perception
 
@@ -24,3 +54,7 @@ Attached to Animation so that it would turn with sprite"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animation/Sense" index="0"]
 position = Vector2( 61, 0 )
 shape = SubResource( 1 )
+[connection signal="body_entered" from="PathDetection_Wall" to="." method="_on_PathDetection_Wall_body_entered"]
+[connection signal="body_exited" from="PathDetection_Wall" to="." method="_on_PathDetection_Wall_body_exited"]
+[connection signal="body_entered" from="PathDetection_Floor" to="." method="_on_PathDetection_Floor_body_entered"]
+[connection signal="body_exited" from="PathDetection_Floor" to="." method="_on_PathDetection_Floor_body_exited"]

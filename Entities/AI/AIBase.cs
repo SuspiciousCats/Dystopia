@@ -15,7 +15,23 @@ namespace Dystopia.Entities.AI
 			InCloseCombat
 		}
 
-		[Export(PropertyHint.Enum)] private Array<Team> EnemyTeams;
+		[Export(PropertyHint.Enum)] public Array<Team> EnemyTeams;
+
+		[Export()] public float PatrolWaitTime = 3;
+
+		[Export()] public bool IsGoingLeft = false;
+
+		protected bool IsWaiting = false;
+		
+		/*used for primitive path finding
+		* If this trigger returns true then there is a wall in front of the ai->ai should turn around and move
+		*/
+		protected Area2D FloorDetection;
+
+		/*Used for primitive path finding
+		 *If this trigger returns false there is no floor to walk on->->ai should turn around and move
+		 * */
+		protected Area2D WallDetection;
 
 		protected Area2D SenseArea;
 			
@@ -25,15 +41,40 @@ namespace Dystopia.Entities.AI
 
 		private Character Target;
 
+		private Timer WaitTimer;
+		
+		protected int FloorInterceptionCount = 0;
+
+		protected int WallInterceptionCount = 0;
+
 		public override void _Ready()
 		{
+			_isLookingLeft = IsGoingLeft;
+			
 			base._Ready();
 			SenseArea = GetNode<Area2D>("Animation/Sense");
+			
+			FloorDetection = GetNode<Area2D>("PathDetection_Floor");
+			WallDetection = GetNode<Area2D>("PathDetection_Wall");
+
+			FloorDetection.Position = new Vector2(IsGoingLeft ? 0 : -40, 0);
+			WallDetection.Position = new Vector2(IsGoingLeft ? 0 : -40, 0);
+		}
+
+		public bool CanWalkForward()
+		{
+			
+			return FloorInterceptionCount > 0 && WallInterceptionCount == 0;
 		}
 
 		protected void GetTarget(Array sensed)
 		{
-			foreach (PhysicsBody2D body in sensed)
+			if (sensed.Count <= 0)
+			{
+				return;
+			}
+
+			foreach (var body in sensed)
 			{
 				if (body is Character character && body != this)
 				{
@@ -52,6 +93,37 @@ namespace Dystopia.Entities.AI
 			}
 			
 			Target = null;
+		}
+
+		protected virtual void UpdateAiMovement()
+		{
+			
+			if (Target == null && !IsWaiting && IsOnFloor())
+			{
+				GD.Print("walk");
+				if (CanWalkForward())
+				{
+					_velocity.x = Speed * (IsGoingLeft ? 1 : -1);
+				}
+				else if(WaitTimer == null ||WaitTimer.IsStopped())
+				{
+					_velocity.x = 0;
+					IsWaiting = true;
+					WaitTimer = new Timer();
+					WaitTimer.WaitTime = PatrolWaitTime;
+					WaitTimer.Connect("timeout", this, "OnStoppedWaiting");
+					AddChild(WaitTimer);
+					WaitTimer.Start();
+					
+					/*The detection positions are update here because ai is still in movement at this frame
+					 and as such overlaps will be properly updated
+					 Setting it afterwards will mean that they are update while ai is standing
+					*/
+					FloorDetection.Position = new Vector2(!IsGoingLeft ? 0 : -40, 0);
+					WallDetection.Position = new Vector2(!IsGoingLeft ? 0 : -40, 0);
+				}
+			}
+			
 		}
 		
 		public virtual void UpdateAI()
@@ -78,6 +150,8 @@ namespace Dystopia.Entities.AI
 						_isLookingLeft);
 				}
 			}
+
+			UpdateAiMovement();
 		}
 
 		public virtual void TargetFound()
@@ -93,10 +167,48 @@ namespace Dystopia.Entities.AI
 		public override void _PhysicsProcess(float delta)
 		{
 			base._PhysicsProcess(delta);
+			
 			if (SenseArea != null)
 			{
 				UpdateAI();
 			}
 		}
+
+		protected virtual void OnStoppedWaiting()
+		{
+			WaitTimer?.Stop();
+			IsWaiting = false;
+			IsGoingLeft = !IsGoingLeft;
+			_isLookingLeft = IsGoingLeft;
+			UpdateAnimation();
+
+			GD.Print("Stopped waiting");
+		}
+
+
+		private void _on_PathDetection_Floor_body_entered(object body)
+		{
+			FloorInterceptionCount++;
+		}
+
+
+		private void _on_PathDetection_Floor_body_exited(object body)
+		{
+			FloorInterceptionCount--;
+		}
+
+
+		private void _on_PathDetection_Wall_body_entered(object body)
+		{
+			WallInterceptionCount++;
+		}
+
+
+		private void _on_PathDetection_Wall_body_exited(object body)
+		{
+			WallInterceptionCount--;
+		}
 	}
 }
+
+

@@ -25,8 +25,12 @@
           <e p="Bullet.cs" t="Include" />
         </e>
         <e p="Character.cs" t="Include" />
+        <e p="Player" t="Include">
+          <e p="Player.cs" t="Include" />
+        </e>
         <e p="Weapons" t="Include">
           <e p="WeaponBase.cs" t="Include" />
+          <e p="WeaponPickup.cs" t="Include" />
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />

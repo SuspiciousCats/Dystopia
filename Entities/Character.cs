@@ -1,5 +1,6 @@
 using Dystopia.Entities.Weapons;
 using Godot;
+using Godot.Collections;
 
 namespace Dystopia.Entities
 {
@@ -44,6 +45,11 @@ namespace Dystopia.Entities
 		protected Animation.Animation _animation;
 
 		protected WeaponBase _weapon;
+
+		public virtual WeaponBase CurrentWeapon
+		{
+			get => _weapon;
+		}
 
 		private bool _jumpButtonDown = false;
 
@@ -96,29 +102,37 @@ namespace Dystopia.Entities
 				animType = "Fall";
 			}
 
-			return animType +"_"+ _weapon.Type.ToString();
+			return animType +"_"+ (CurrentWeapon != null ?CurrentWeapon.Type.ToString() : "None");
 		}
 
 		// Called when the node enters the scene tree for the first time.
 		public override void _Ready()
 		{
-			var scene = GD.Load<PackedScene>(WeaponScene);
+			base._Ready();
+			
 			_animation = GetNode<Animation.Animation>("Animation");
-			if (scene != null)
-			{
-				_weapon = GD.Load<PackedScene>(WeaponScene).Instance() as WeaponBase;
-				if (_weapon != null)
-				{
-					_weapon.OwningCharacter = this;
-					AddChild(_weapon);
-				}
-			}
 
 			if (IsControlledByPlayer)
 			{
 				GetNode<Camera2D>("Camera2D").Current = true;
 			}
 			
+		}
+
+		protected virtual bool SpawnWeapon()
+		{
+			var scene = GD.Load<PackedScene>(WeaponScene);
+			if (scene != null)
+			{
+				_weapon = GD.Load<PackedScene>(WeaponScene).Instance() as Weapons.WeaponBase;
+				if (_weapon != null)
+				{
+					_weapon.OwningCharacter = this;
+					AddChild(CurrentWeapon);
+					return true;
+				}
+			}
+			return false;
 		}
 
 		protected virtual void GetInput()
@@ -149,7 +163,7 @@ namespace Dystopia.Entities
 
 			if (Input.IsActionPressed("shoot"))
 			{
-				_weapon?.Shoot(
+				CurrentWeapon?.Shoot(
 					new Vector2
 					(
 						(_animation.BulletSpawnPosition.Position.x*(_isLookingLeft ? 1 : -1)) + Position.x,
@@ -159,10 +173,10 @@ namespace Dystopia.Entities
 					_isLookingLeft);
 			}
 
-			if (Input.IsActionPressed("reload") && !Reloading && _weapon != null)
+			if (Input.IsActionPressed("reload") && !Reloading && CurrentWeapon != null)
 			{
 				Reloading = true;
-				_animation.PlayMontage("Reload_"+_weapon.Type.ToString());
+				_animation.PlayMontage("Reload_"+CurrentWeapon.Type.ToString());
 			}
 			else if(Input.IsActionPressed("reload"))
 			{
@@ -264,16 +278,16 @@ namespace Dystopia.Entities
 
 		private void _on_Animation_OnMontageFinished(string montageName)
 		{
-			if (montageName == ("Reload_" + _weapon.Type.ToString()) && Reloading)
+			if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
 			{
 				Reloading = false;
-				_weapon.Reload();
+				CurrentWeapon.Reload();
 			}
 		}
 
 		private void _on_Animation_OnMontageInterrupted(string montageName, int currentFrame)
 		{
-			if (montageName == ("Reload_" + _weapon.Type.ToString()) && Reloading)
+			if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
 			{
 				Reloading = false;
 			}

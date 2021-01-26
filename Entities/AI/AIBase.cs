@@ -21,6 +21,8 @@ namespace Dystopia.Entities.AI
 
 		[Export()] public bool IsGoingLeft = false;
 
+		[Export()] public bool DrawDebugLines = false;
+
 		protected bool IsWaiting = false;
 		
 		/*used for primitive path finding
@@ -47,10 +49,13 @@ namespace Dystopia.Entities.AI
 
 		protected int WallInterceptionCount = 0;
 
+		private Line2D _debugLine;
+
 		public override void _Ready()
 		{
+
 			_isLookingLeft = IsGoingLeft;
-			
+
 			base._Ready();
 			SenseArea = GetNode<Area2D>("Animation/Sense");
 			
@@ -59,6 +64,10 @@ namespace Dystopia.Entities.AI
 
 			FloorDetection.Position = new Vector2(IsGoingLeft ? 0 : -40, 0);
 			WallDetection.Position = new Vector2(IsGoingLeft ? 0 : -40, 0);
+
+			_debugLine = GetNode<Line2D>("PerceptionDebugLine2D");
+
+			SpawnWeapon();
 		}
 
 		public bool CanWalkForward()
@@ -132,6 +141,14 @@ namespace Dystopia.Entities.AI
 			{
 				var spaceState = GetWorld2d().DirectSpaceState;
 				var result = spaceState.IntersectRay(GlobalPosition, Target.GlobalPosition, new Array() {this});
+
+				if (DrawDebugLines && Target != null)
+				{
+					_debugLine.ClearPoints();
+					_debugLine.AddPoint(GlobalPosition);
+					_debugLine.AddPoint(Target.GlobalPosition);
+				}
+				
 				if (result != null && result["collider"] != null)
 				{
 					if (result["collider"] is Character)
@@ -142,7 +159,8 @@ namespace Dystopia.Entities.AI
 			}
 			return false;
 		}
-		
+
+
 		public virtual void UpdateAI()
 		{
 
@@ -187,7 +205,7 @@ namespace Dystopia.Entities.AI
 		{
 			base._PhysicsProcess(delta);
 			
-			if (SenseArea != null)
+			if (SenseArea != null && !Dead)
 			{
 				UpdateAI();
 			}

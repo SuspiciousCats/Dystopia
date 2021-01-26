@@ -5,6 +5,13 @@ namespace Dystopia.Entities.Weapons
 {
 	public class WeaponBase : AnimatedSprite
 	{
+		public class Ammo
+		{
+			public WeaponType Type = WeaponType.Pistol;
+
+			public int Amount = 0;
+		}
+		
 		public enum WeaponType
 		{
 			None,

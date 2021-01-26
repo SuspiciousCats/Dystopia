@@ -100,7 +100,6 @@ namespace Dystopia.Entities.AI
 			
 			if (Target == null && !IsWaiting && IsOnFloor())
 			{
-				GD.Print("walk");
 				if (CanWalkForward())
 				{
 					_velocity.x = Speed * (IsGoingLeft ? 1 : -1);
@@ -125,6 +124,24 @@ namespace Dystopia.Entities.AI
 			}
 			
 		}
+
+		//this checks if there is an obstacle between target and ai using ray cast
+		protected bool CanActuallySeeTarget()
+		{
+			if (Target != null)
+			{
+				var spaceState = GetWorld2d().DirectSpaceState;
+				var result = spaceState.IntersectRay(GlobalPosition, Target.GlobalPosition, new Array() {this});
+				if (result != null && result["collider"] != null)
+				{
+					if (result["collider"] is Character)
+					{
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 		
 		public virtual void UpdateAI()
 		{
@@ -135,8 +152,10 @@ namespace Dystopia.Entities.AI
 			{
 				GetTarget(senced);
 			}
+
 			
-			if (Target != null)
+			
+			if (Target != null && !Target.Dead && CanActuallySeeTarget())
 			{
 				if (_weapon != null)
 				{
@@ -181,8 +200,6 @@ namespace Dystopia.Entities.AI
 			IsGoingLeft = !IsGoingLeft;
 			_isLookingLeft = IsGoingLeft;
 			UpdateAnimation();
-
-			GD.Print("Stopped waiting");
 		}
 
 

@@ -19,6 +19,8 @@
       <option value="$PROJECT_DIR$/Entities/Animation/Animation.cs" />
       <option value="$PROJECT_DIR$/Entities/Player/Player.cs" />
       <option value="$PROJECT_DIR$/Entities/Interactive/InteractiveObject.cs" />
+      <option value="$PROJECT_DIR$/Entities/Interactive/DoorButton.cs" />
+      <option value="$PROJECT_DIR$/Entities/Door/Door.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nJxcr0xXnxBOnbTwLvldxOobwE" />

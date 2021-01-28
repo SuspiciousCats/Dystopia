@@ -10,7 +10,7 @@ namespace Dystopia.Entities.Interactive
 		[Export()] public bool NeedsKey = false;
 
 		//function actually responsible for doing stuff(like moving elevator)
-		public void DoAction()
+		public virtual void DoAction()
 		{
 		}
 

@@ -27,10 +27,15 @@
         <e p="Character.cs" t="Include" />
         <e p="Door" t="Include">
           <e p="Door.cs" t="Include" />
+          <e p="Elevator.cs" t="Include" />
         </e>
         <e p="Interactive" t="Include">
           <e p="DoorButton.cs" t="Include" />
+          <e p="ElevatorButton.cs" t="Include" />
           <e p="InteractiveObject.cs" t="Include" />
+        </e>
+        <e p="MathHelpers" t="Include">
+          <e p="Math.cs" t="Include" />
         </e>
         <e p="Player" t="Include">
           <e p="Player.cs" t="Include" />

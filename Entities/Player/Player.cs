@@ -14,9 +14,67 @@ namespace Dystopia.Entities.Player
 
         [Export()] public int CurrentWeaponId = -1;
 
+        [Export()] public Array<int> Keys = new Array<int>();
+
+        private bool _isInteractKeyDown = false;
+
+        private Area2D _interationArea;
         public override void _Ready()
         {
             base._Ready();
+            _interationArea = GetNode<Area2D>("InteractionArea2D");
+            
+        }
+
+        protected void Interact()
+        {
+            if (_interationArea != null)
+            {
+               
+                if (_interationArea.GetOverlappingAreas().Count > 0)
+                {
+                    
+                    //try everyone of them in-case they are interactive areas
+                    foreach (var area in _interationArea.GetOverlappingAreas())
+                    {
+                        if (area is Interactive.InteractiveObject interactiveObject)
+                        {
+                            if (interactiveObject.NeedsToBeUnlocked)
+                            {
+                                //try every key we have
+                                foreach (int key in Keys)
+                                {
+                                    //stop trying if key is good
+                                    if (interactiveObject.Interact(key))
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                interactiveObject.Interact();
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        protected override void GetInput()
+        {
+            base.GetInput();
+            if (Input.IsActionPressed("interact") && !_isInteractKeyDown)
+            {
+                Interact();
+                //to avoid spam
+                _isInteractKeyDown = true;
+            }
+            else if(!Input.IsActionPressed("interact"))
+            {
+                _isInteractKeyDown = false;
+            }
         }
 
         public override WeaponBase CurrentWeapon => (Weapons.Count > 0) ? Weapons[CurrentWeaponId] : null;

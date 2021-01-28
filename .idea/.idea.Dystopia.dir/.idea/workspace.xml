@@ -12,12 +12,13 @@
       <option value="$PROJECT_DIR$/Scenes/Character.cs" />
       <option value="$PROJECT_DIR$/Entities/Bullet/Bullet.cs" />
       <option value="$PROJECT_DIR$/Entities/BodyPart.cs" />
-      <option value="$PROJECT_DIR$/Entities/Animation/Animation.cs" />
       <option value="$PROJECT_DIR$/Entities/Weapons/WeaponBase.cs" />
       <option value="$PROJECT_DIR$/Entities/AI/AIBase.cs" />
       <option value="$PROJECT_DIR$/Entities/Weapons/WeaponPickup.cs" />
-      <option value="$PROJECT_DIR$/Entities/Player/Player.cs" />
       <option value="$PROJECT_DIR$/Entities/Character.cs" />
+      <option value="$PROJECT_DIR$/Entities/Animation/Animation.cs" />
+      <option value="$PROJECT_DIR$/Entities/Player/Player.cs" />
+      <option value="$PROJECT_DIR$/Entities/Interactive/InteractiveObject.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1nJxcr0xXnxBOnbTwLvldxOobwE" />

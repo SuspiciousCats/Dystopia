@@ -59,7 +59,7 @@ namespace Dystopia.Entities.Animation
 
 		private void _on_Animation_animation_finished()
 		{
-			GD.Print("_on_Animation_animation_finished");
+			//GD.Print("_on_Animation_animation_finished");
 			if (IsPlayingMontage)
 			{
 				GD.Print("Ended Montage");

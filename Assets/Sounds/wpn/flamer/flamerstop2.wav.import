@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/flamerstop2.wav-b8662979e17c9927f131b805851113b3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/flamer/flamerstop2.wav"
+dest_files=[ "res://.import/flamerstop2.wav-b8662979e17c9927f131b805851113b3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

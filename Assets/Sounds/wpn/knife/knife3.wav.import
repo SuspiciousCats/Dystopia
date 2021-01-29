@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knife3.wav-430ebeff9a0323deb19c20f7a38dab2d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/knife/knife3.wav"
+dest_files=[ "res://.import/knife3.wav-430ebeff9a0323deb19c20f7a38dab2d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

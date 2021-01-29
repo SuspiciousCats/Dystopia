@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/iris1.wav-ed0130e2674f2e46161d546925d633b5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/door/iris1.wav"
+dest_files=[ "res://.import/iris1.wav-ed0130e2674f2e46161d546925d633b5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

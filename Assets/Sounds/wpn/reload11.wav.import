@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reload11.wav-93c141f6d0d32a3a4090f80505e5961c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/reload11.wav"
+dest_files=[ "res://.import/reload11.wav-93c141f6d0d32a3a4090f80505e5961c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

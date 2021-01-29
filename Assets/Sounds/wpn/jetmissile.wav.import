@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jetmissile.wav-497b69f242a86c3669138d2b9651d1ae.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/jetmissile.wav"
+dest_files=[ "res://.import/jetmissile.wav-497b69f242a86c3669138d2b9651d1ae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

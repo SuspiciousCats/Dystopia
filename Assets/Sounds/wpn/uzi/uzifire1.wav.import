@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/uzifire1.wav-6e89e5663142fe5ad61d69b7cd5aeb02.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/uzi/uzifire1.wav"
+dest_files=[ "res://.import/uzifire1.wav-6e89e5663142fe5ad61d69b7cd5aeb02.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

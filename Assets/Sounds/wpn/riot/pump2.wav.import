@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pump2.wav-f70a3f0dd6c3283530d3ef0f60f00188.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/riot/pump2.wav"
+dest_files=[ "res://.import/pump2.wav-f70a3f0dd6c3283530d3ef0f60f00188.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

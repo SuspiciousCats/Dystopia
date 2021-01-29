@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lynxfire2.wav-c052fc90925eabf595f7f96a99d35dfa.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/lynx/lynxfire2.wav"
+dest_files=[ "res://.import/lynxfire2.wav-c052fc90925eabf595f7f96a99d35dfa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

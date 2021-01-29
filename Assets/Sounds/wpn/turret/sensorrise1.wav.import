@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sensorrise1.wav-dcb41b7846b130b1a76aed09ceaa339a.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/turret/sensorrise1.wav"
+dest_files=[ "res://.import/sensorrise1.wav-dcb41b7846b130b1a76aed09ceaa339a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

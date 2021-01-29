@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boom3.wav-01e4cfc1ba8a452dc162bec7765f9437.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/antimatter/boom3.wav"
+dest_files=[ "res://.import/boom3.wav-01e4cfc1ba8a452dc162bec7765f9437.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

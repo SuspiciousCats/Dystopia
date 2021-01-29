@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/turretscan2.wav-baff3edc21a1fcb67f8eb8dfe4e2d653.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/turret/turretscan2.wav"
+dest_files=[ "res://.import/turretscan2.wav-baff3edc21a1fcb67f8eb8dfe4e2d653.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

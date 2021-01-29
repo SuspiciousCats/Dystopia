@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rifle4.wav-a7c19814f39ea9b432b5aeda528235a1.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/rifle/rifle4.wav"
+dest_files=[ "res://.import/rifle4.wav-a7c19814f39ea9b432b5aeda528235a1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

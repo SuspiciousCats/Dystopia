@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fire2.wav-851d65589cb13791bc218d3d9dcba3da.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/shotgun/fire2.wav"
+dest_files=[ "res://.import/fire2.wav-851d65589cb13791bc218d3d9dcba3da.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

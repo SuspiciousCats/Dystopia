@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/circsaw-fire.wav-69386bce053f7ddb2f159be5f3f0f876.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/chainsaw/circsaw-fire.wav"
+dest_files=[ "res://.import/circsaw-fire.wav-69386bce053f7ddb2f159be5f3f0f876.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

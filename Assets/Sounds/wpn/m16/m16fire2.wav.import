@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/m16fire2.wav-c20618de79785b22262d6e3e2f0be7cb.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/m16/m16fire2.wav"
+dest_files=[ "res://.import/m16fire2.wav-c20618de79785b22262d6e3e2f0be7cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

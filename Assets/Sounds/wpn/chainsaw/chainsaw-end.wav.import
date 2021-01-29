@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chainsaw-end.wav-a2f072919f448bd0141244ef9c593c48.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/chainsaw/chainsaw-end.wav"
+dest_files=[ "res://.import/chainsaw-end.wav-a2f072919f448bd0141244ef9c593c48.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

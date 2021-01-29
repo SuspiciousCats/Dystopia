@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pong1.wav-2980b28c6065b18939076f29a3d48795.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/antimatter/pong1.wav"
+dest_files=[ "res://.import/pong1.wav-2980b28c6065b18939076f29a3d48795.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

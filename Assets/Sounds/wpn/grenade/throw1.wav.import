@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/throw1.wav-54e84e9e1adb1f340078b3a825de07e4.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/grenade/throw1.wav"
+dest_files=[ "res://.import/throw1.wav-54e84e9e1adb1f340078b3a825de07e4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

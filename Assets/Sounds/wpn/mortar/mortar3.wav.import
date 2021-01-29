@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mortar3.wav-d36dfc5352b7da971fd0df9dbc002a3b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/mortar/mortar3.wav"
+dest_files=[ "res://.import/mortar3.wav-d36dfc5352b7da971fd0df9dbc002a3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

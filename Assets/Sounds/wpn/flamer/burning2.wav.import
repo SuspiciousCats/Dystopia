@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/burning2.wav-b04d25b87229dcaed15be234e5fad754.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/flamer/burning2.wav"
+dest_files=[ "res://.import/burning2.wav-b04d25b87229dcaed15be234e5fad754.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

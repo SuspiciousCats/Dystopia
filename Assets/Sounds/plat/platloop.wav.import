@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/platloop.wav-217498c2817acb2c571334e378408adc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/plat/platloop.wav"
+dest_files=[ "res://.import/platloop.wav-217498c2817acb2c571334e378408adc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

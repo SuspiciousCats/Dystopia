@@ -155,6 +155,10 @@ namespace Dystopia.Entities.AI
 					WallDetection.Position = new Vector2(!IsGoingLeft ? 0 : -50, 0);
 				}
 			}
+			else
+			{
+				_velocity.x = 0;
+			}
 		}
 
 		//this checks if there is an obstacle between target and ai using ray cast

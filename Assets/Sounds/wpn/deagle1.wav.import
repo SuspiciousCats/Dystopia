@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/deagle1.wav-3a3e7c90fad99ea0136a24b9186f45dc.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/deagle1.wav"
+dest_files=[ "res://.import/deagle1.wav-3a3e7c90fad99ea0136a24b9186f45dc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

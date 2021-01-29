@@ -10,15 +10,32 @@ namespace Dystopia.Entities.Door
 
 		[Export()] public bool IsAtTheEnd = false;
 
+		[Export(PropertyHint.File)] public AudioStreamSample MovementStartSound;
+
+		[Export(PropertyHint.File)] public AudioStreamSample MovementEndSound;
+
+		[Export(PropertyHint.File)] public AudioStreamSample MovementLoopSound;
+
 		public bool Moving = false;
 
 		protected Vector2 StartLocation;
+
+		protected AudioStreamPlayer2D SoundPlayer;
+
+		protected AudioStreamPlayer2D SoundLoopPlayer;
 
 		public override void _Ready()
 		{
 			base._Ready();
 
 			StartLocation = Position;
+
+			SoundPlayer = new AudioStreamPlayer2D();
+			AddChild(SoundPlayer);
+
+			SoundLoopPlayer = new AudioStreamPlayer2D {Stream = MovementLoopSound};
+			
+			AddChild(SoundLoopPlayer);
 		}
 
 		public virtual void Move()
@@ -26,7 +43,22 @@ namespace Dystopia.Entities.Door
 			if(!Moving)
 			{
 				Moving = true;
+				
+				SoundPlayer.Stream = MovementStartSound;
+				SoundPlayer.Play();
+
+				SoundLoopPlayer.Play();
 			}
+		}
+
+		protected virtual void OnMovementEnd()
+		{
+			Moving = false;
+			IsAtTheEnd = !IsAtTheEnd;
+			SoundPlayer.Stream = MovementEndSound;
+			SoundPlayer.Play();
+
+			SoundLoopPlayer.Stop();
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -43,8 +75,7 @@ namespace Dystopia.Entities.Door
 					);
 					if (Position.IsEqualApprox(StartLocation + EndLocationRelative))
 					{
-						Moving = false;
-						IsAtTheEnd = !IsAtTheEnd;
+						OnMovementEnd();
 					}
 				}
 				else
@@ -56,8 +87,7 @@ namespace Dystopia.Entities.Door
 					);
 					if (Position.IsEqualApprox(StartLocation))
 					{
-						Moving = false;
-						IsAtTheEnd = !IsAtTheEnd;
+						OnMovementEnd();
 					}
 				}
 			}

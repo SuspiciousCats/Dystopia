@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pin1.wav-869da01930499beebe3155b51c2ca0e5.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/grenade/pin1.wav"
+dest_files=[ "res://.import/pin1.wav-869da01930499beebe3155b51c2ca0e5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

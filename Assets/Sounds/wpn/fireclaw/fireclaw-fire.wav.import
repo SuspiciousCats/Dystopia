@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fireclaw-fire.wav-bfc273a995fe7f79c61d3ce309512591.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/fireclaw/fireclaw-fire.wav"
+dest_files=[ "res://.import/fireclaw-fire.wav-bfc273a995fe7f79c61d3ce309512591.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

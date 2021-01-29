@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bbhit3.wav-56faf730799f4353ed06ab52fa85a9ea.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/bblauncher/bbhit3.wav"
+dest_files=[ "res://.import/bbhit3.wav-56faf730799f4353ed06ab52fa85a9ea.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

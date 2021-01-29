@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/reload2.wav-9575796e31625735a76f48715b47aa50.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/laser/reload2.wav"
+dest_files=[ "res://.import/reload2.wav-9575796e31625735a76f48715b47aa50.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laserhit.wav-e54fb04f0fb27fa39c2c53a873e15464.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/door/laserhit.wav"
+dest_files=[ "res://.import/laserhit.wav-e54fb04f0fb27fa39c2c53a873e15464.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

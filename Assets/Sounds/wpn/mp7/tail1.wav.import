@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/tail1.wav-090a730921195c4fc4263cdcb46ef383.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/mp7/tail1.wav"
+dest_files=[ "res://.import/tail1.wav-090a730921195c4fc4263cdcb46ef383.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

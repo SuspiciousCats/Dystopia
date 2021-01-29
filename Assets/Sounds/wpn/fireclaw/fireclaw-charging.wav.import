@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fireclaw-charging.wav-2b20de528d252fea4e1638a8707579ab.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/fireclaw/fireclaw-charging.wav"
+dest_files=[ "res://.import/fireclaw-charging.wav-2b20de528d252fea4e1638a8707579ab.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

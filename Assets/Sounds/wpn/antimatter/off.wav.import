@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/off.wav-a9584c6a9437d97131eb13d0bfc59123.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/antimatter/off.wav"
+dest_files=[ "res://.import/off.wav-a9584c6a9437d97131eb13d0bfc59123.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

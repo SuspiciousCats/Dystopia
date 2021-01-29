@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/liftopen.wav-6490978660ede7b92788c0c718695ab3.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/door/liftopen.wav"
+dest_files=[ "res://.import/liftopen.wav-6490978660ede7b92788c0c718695ab3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

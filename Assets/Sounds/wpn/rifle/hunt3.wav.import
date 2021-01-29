@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hunt3.wav-0da10b6f297379773a9524fd0832e230.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/rifle/hunt3.wav"
+dest_files=[ "res://.import/hunt3.wav-0da10b6f297379773a9524fd0832e230.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

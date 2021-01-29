@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drillstop.wav-af216f536da32f5a9c6196616f76c75d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/minigun/drillstop.wav"
+dest_files=[ "res://.import/drillstop.wav-af216f536da32f5a9c6196616f76c75d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

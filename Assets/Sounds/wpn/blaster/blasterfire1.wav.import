@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blasterfire1.wav-f85770a2f409ff262fb8940d416c9165.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/wpn/blaster/blasterfire1.wav"
+dest_files=[ "res://.import/blasterfire1.wav-f85770a2f409ff262fb8940d416c9165.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

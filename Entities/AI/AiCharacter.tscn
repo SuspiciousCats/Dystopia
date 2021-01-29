@@ -17,6 +17,8 @@ extents = Vector2( 61, 23 )
 script = ExtResource( 2 )
 Speed = 100.0
 EnemyTeams = [ 0 ]
+IsGoingLeft = true
+DoDebugOutput = true
 
 [node name="PathDetection_Wall" type="Area2D" parent="." index="0"]
 __meta__ = {
@@ -29,6 +31,16 @@ Attached to Animation so that it would turn with sprite"
 position = Vector2( 21, 0 )
 shape = SubResource( 1 )
 
+[node name="WallDetect_ColorRect" type="ColorRect" parent="PathDetection_Wall" index="1"]
+margin_left = 11.0
+margin_top = -13.0
+margin_right = 31.0
+margin_bottom = 13.0
+color = Color( 0, 0.14902, 0.956863, 0.415686 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PathDetection_Floor" type="Area2D" parent="." index="1"]
 __meta__ = {
 "_editor_description_": "If this trigger returns false there is no floor to walk on->->ai should turn around and move
@@ -39,6 +51,16 @@ Attached to Animation so that it would turn with sprite"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathDetection_Floor" index="0"]
 position = Vector2( 21, 26 )
 shape = SubResource( 2 )
+
+[node name="FloorDetect_ColorRect" type="ColorRect" parent="PathDetection_Floor" index="1"]
+margin_left = 11.0
+margin_top = 19.0
+margin_right = 31.0
+margin_bottom = 29.0
+color = Color( 0.737255, 0.129412, 0.129412, 0.54902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Animation" parent="." index="4"]
 frames = ExtResource( 3 )
@@ -59,6 +81,17 @@ position = Vector2( 61, 0 )
 shape = SubResource( 3 )
 
 [node name="PerceptionDebugLine2D" type="Line2D" parent="." index="5"]
+
+[node name="DebugAiDisplay" type="RichTextLabel" parent="." index="6"]
+margin_left = -21.0
+margin_top = -41.0
+margin_right = 171.0
+margin_bottom = 1.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Can move = false"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="PathDetection_Wall" to="." method="_on_PathDetection_Wall_body_entered"]
 [connection signal="body_exited" from="PathDetection_Wall" to="." method="_on_PathDetection_Wall_body_exited"]
 [connection signal="body_entered" from="PathDetection_Floor" to="." method="_on_PathDetection_Floor_body_entered"]

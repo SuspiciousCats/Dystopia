@@ -366,13 +366,10 @@ position = Vector2( -118, 23 )
 texture = ExtResource( 20 )
 
 [node name="crate_big" parent="." instance=ExtResource( 9 )]
+position = Vector2( 138, 191 )
 
 [node name="boxes_1" type="Sprite" parent="crate_big"]
 position = Vector2( -5, -32 )
-texture = ExtResource( 17 )
-
-[node name="boxes_2" type="Sprite" parent="crate_big"]
-position = Vector2( -262, -52 )
 texture = ExtResource( 17 )
 
 [node name="crate_big12" type="Sprite" parent="."]
@@ -618,16 +615,12 @@ shadow_filter = 1
 shadow_item_cull_mask = 7
 
 [node name="Character2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -84, 36 )
+position = Vector2( 74, 69 )
 collision_layer = 1
 collision_mask = 1
 IsControlledByPlayer = false
-
-[node name="Character3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 975, 73 )
-collision_layer = 1
-collision_mask = 1
-IsControlledByPlayer = false
+Speed = 150.0
+EnemyTeams = [ 1 ]
 
 [node name="truck_back3" parent="." instance=ExtResource( 8 )]
 

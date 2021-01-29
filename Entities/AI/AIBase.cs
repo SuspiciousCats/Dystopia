@@ -23,6 +23,8 @@ namespace Dystopia.Entities.AI
 
 		[Export()] public bool DrawDebugLines = false;
 
+		[Export()] public bool DoDebugOutput = false;
+
 		protected bool IsWaiting = false;
 		
 		/*used for primitive path finding
@@ -51,6 +53,8 @@ namespace Dystopia.Entities.AI
 
 		private Line2D _debugLine;
 
+		private RichTextLabel _debugOutput;
+
 		public override void _Ready()
 		{
 
@@ -68,11 +72,21 @@ namespace Dystopia.Entities.AI
 			_debugLine = GetNode<Line2D>("PerceptionDebugLine2D");
 
 			SpawnWeapon();
+
+			if (DoDebugOutput)
+			{
+				_debugOutput = GetNode<RichTextLabel>("DebugAiDisplay");
+			}
+			else
+			{
+				GetNode<RichTextLabel>("DebugAiDisplay")?.QueueFree();
+				FindNode("WallDetect_ColorRect").QueueFree();
+				FindNode("FloorDetect_ColorRect").QueueFree();
+			}
 		}
 
 		public bool CanWalkForward()
 		{
-			
 			return FloorInterceptionCount > 0 && WallInterceptionCount == 0;
 		}
 
@@ -106,14 +120,24 @@ namespace Dystopia.Entities.AI
 
 		protected virtual void UpdateAiMovement()
 		{
-			
+			if (DoDebugOutput)
+			{
+				_debugOutput.Text = "FloorInterceptionCount " + FloorInterceptionCount.ToString() + "\n" +
+									"WallInterceptionCount " + WallInterceptionCount.ToString();
+
+				if (WallInterceptionCount > 0)
+				{
+					_debugOutput.Text += "\n" + WallDetection.GetOverlappingBodies()[0].ToString();
+				}
+			}
+
 			if (Target == null && !IsWaiting && IsOnFloor())
 			{
 				if (CanWalkForward())
 				{
 					_velocity.x = Speed * (IsGoingLeft ? 1 : -1);
 				}
-				else if(WaitTimer == null ||WaitTimer.IsStopped())
+				else if (WaitTimer == null || WaitTimer.IsStopped())
 				{
 					_velocity.x = 0;
 					IsWaiting = true;
@@ -122,16 +146,15 @@ namespace Dystopia.Entities.AI
 					WaitTimer.Connect("timeout", this, "OnStoppedWaiting");
 					AddChild(WaitTimer);
 					WaitTimer.Start();
-					
+
 					/*The detection positions are update here because ai is still in movement at this frame
 					 and as such overlaps will be properly updated
 					 Setting it afterwards will mean that they are update while ai is standing
 					*/
-					FloorDetection.Position = new Vector2(!IsGoingLeft ? 0 : -40, 0);
-					WallDetection.Position = new Vector2(!IsGoingLeft ? 0 : -40, 0);
+					FloorDetection.Position = new Vector2(!IsGoingLeft ? 0 : -50, 0);
+					WallDetection.Position = new Vector2(!IsGoingLeft ? 0 : -50, 0);
 				}
 			}
-			
 		}
 
 		//this checks if there is an obstacle between target and ai using ray cast

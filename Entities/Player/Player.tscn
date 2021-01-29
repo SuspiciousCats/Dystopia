@@ -9,8 +9,6 @@ extents = Vector2( 15, 24 )
 
 [node name="Character" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-DeadCollisionLayer = 0
-DeadCollisionMask = 0
 WeaponScene = ""
 
 [node name="Animation" parent="." index="2"]

@@ -2,7 +2,7 @@
 
 namespace Dystopia.Entities.MathHelpers
 {
-    public class Math
+    public static class Math
     {
 
         public static float FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed)

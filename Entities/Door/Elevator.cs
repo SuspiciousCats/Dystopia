@@ -54,7 +54,7 @@ namespace Dystopia.Entities.Door
 						MathHelpers.Math.FInterpConstantTo(Position.x, StartLocation.x, delta, Speed),
 						MathHelpers.Math.FInterpConstantTo(Position.y, StartLocation.y, delta, Speed)
 					);
-					if (Position.IsEqualApprox(StartLocation - EndLocationRelative))
+					if (Position.IsEqualApprox(StartLocation))
 					{
 						Moving = false;
 						IsAtTheEnd = !IsAtTheEnd;

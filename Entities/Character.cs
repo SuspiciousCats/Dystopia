@@ -278,18 +278,24 @@ namespace Dystopia.Entities
 
 		private void _on_Animation_OnMontageFinished(string montageName)
 		{
-			if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+			if (CurrentWeapon != null)
 			{
-				Reloading = false;
-				CurrentWeapon.Reload();
+				if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+				{
+					Reloading = false;
+					CurrentWeapon.Reload();
+				}
 			}
 		}
 
 		private void _on_Animation_OnMontageInterrupted(string montageName, int currentFrame)
 		{
-			if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+			if (CurrentWeapon != null)
 			{
-				Reloading = false;
+				if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+				{
+					Reloading = false;
+				}
 			}
 		}
 

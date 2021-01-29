@@ -14,11 +14,19 @@ namespace Dystopia.Entities.Door
 
 		protected Vector2 StartLocation;
 
-		
+		public override void _Ready()
+		{
+			base._Ready();
+
+			StartLocation = Position;
+		}
+
 		public virtual void Move()
 		{
-			Moving = true;
-			StartLocation = Position;
+			if(!Moving)
+			{
+				Moving = true;
+			}
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -26,15 +34,31 @@ namespace Dystopia.Entities.Door
 			base._PhysicsProcess(delta);
 			if (Moving)
 			{
-				Position = new Vector2
-				(
-					MathHelpers.Math.FInterpTo(Position.x, StartLocation.x + EndLocationRelative.x, delta, Speed),
-					MathHelpers.Math.FInterpTo(Position.y, StartLocation.y + EndLocationRelative.y, delta, Speed)
-				);
-				if (Position.IsEqualApprox(StartLocation + EndLocationRelative))
+				if (!IsAtTheEnd)
 				{
-					Moving = false;
-					IsAtTheEnd = !IsAtTheEnd;
+					Position = new Vector2
+					(
+						MathHelpers.Math.FInterpConstantTo(Position.x, StartLocation.x + EndLocationRelative.x, delta, Speed),
+						MathHelpers.Math.FInterpConstantTo(Position.y, StartLocation.y + EndLocationRelative.y, delta, Speed)
+					);
+					if (Position.IsEqualApprox(StartLocation + EndLocationRelative))
+					{
+						Moving = false;
+						IsAtTheEnd = !IsAtTheEnd;
+					}
+				}
+				else
+				{
+					Position = new Vector2
+					(
+						MathHelpers.Math.FInterpConstantTo(Position.x, StartLocation.x, delta, Speed),
+						MathHelpers.Math.FInterpConstantTo(Position.y, StartLocation.y, delta, Speed)
+					);
+					if (Position.IsEqualApprox(StartLocation - EndLocationRelative))
+					{
+						Moving = false;
+						IsAtTheEnd = !IsAtTheEnd;
+					}
 				}
 			}
 		}

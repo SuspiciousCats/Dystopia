@@ -5,7 +5,7 @@ namespace Dystopia.Entities.MathHelpers
     public class Math
     {
 
-        static public float FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed)
+        public static float FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed)
         {
             if (InterpSpeed <= 0)
             {
@@ -16,7 +16,7 @@ namespace Dystopia.Entities.MathHelpers
             float Dist = Target - Current;
 
             // If distance is too small, just set the desired location
-            if ((Dist * Dist) < 0.01)
+            if ((Dist * Dist) < 0.1)
             {
                 return Target;
             }
@@ -27,5 +27,21 @@ namespace Dystopia.Entities.MathHelpers
 
             return Current + DeltaMove;
         }
+
+
+        public static float FInterpConstantTo(float Current, float Target, float DeltaTime, float InterpSpeed)
+        {
+            float Dist = Target - Current;
+
+            // If distance is too small, just set the desired location
+            if ((Dist * Dist) < 0.1)
+            {
+                return Target;
+            }
+
+            float Step = InterpSpeed * DeltaTime;
+            return Current + Mathf.Clamp(Dist, -Step, Step);
+        }
     }
+
 }

@@ -10,9 +10,11 @@ namespace Dystopia.Entities.Interactive
 		public override void DoAction()
 		{
 			base.DoAction();
+			
 			foreach (var doorName in DoorNames)
 			{
-				(GetParent().FindNode(doorName)as Door.Door)?.Toggle();
+				GD.Print(GetTree().Root.GetChild(0).FindNode(doorName, true, false) is Door.Door);
+				(GetTree().Root.GetChild(0).FindNode(doorName, true, false)as Door.Door)?.Toggle();
 			}
 		}
 	}

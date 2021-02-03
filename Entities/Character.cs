@@ -30,6 +30,8 @@ namespace Dystopia.Entities
 
 		[Export(PropertyHint.Enum)] public Team CharacterTeam = Team.Player;
 
+		public bool Crouching = false;
+
 		protected bool Reloading = false;
 
 		private bool _dead = false;
@@ -90,6 +92,10 @@ namespace Dystopia.Entities
 			}
 			else if(IsOnFloor())
 			{
+				if (Crouching)
+				{
+					return "Crouch";
+				}
 				animType = "Idle";
 			}
 
@@ -137,54 +143,74 @@ namespace Dystopia.Entities
 
 		protected virtual void GetInput()
 		{
-			if (Input.IsActionPressed("move_right"))
+			//when character is crouched they can not move
+			if (Input.IsActionPressed("crouch"))
 			{
-				_velocity.x = Speed;
-			}
-
-			if (Input.IsActionPressed("move_left"))
-			{
-				_velocity.x = -1* GetCurrentSpeed();
-			}
-		
-			else if (!Input.IsActionPressed("move_left") && !Input.IsActionPressed("move_right"))
-			{
+				Crouching = true;
 				_velocity.x = 0;
-			}
-
-			if (Input.IsActionPressed("move_jump") )
-			{
-				_jumpButtonDown = true;
 			}
 			else
 			{
-				_jumpButtonDown = false;
-			}
+				Crouching = false;
 
-			if (Input.IsActionPressed("shoot"))
-			{
-				CurrentWeapon?.Shoot(
-					new Vector2
-					(
-						(_animation.BulletSpawnPosition.Position.x*(_isLookingLeft ? 1 : -1)) + Position.x,
-						_animation.BulletSpawnPosition.Position.y + Position.y
-					),
-					0,
-					_isLookingLeft);
-			}
+				//character can not move while shooting, and because we don't have an animation for shooting we just use timer magic
+				if (CurrentWeapon == null || CurrentWeapon.CooldownTimer  == null  ||CurrentWeapon.CooldownTimer.TimeLeft < CurrentWeapon.CooldownTime * 0.5f)
+				{
+					if (Input.IsActionPressed("move_right"))
+					{
+						_velocity.x = Speed;
+					}
 
-			if (Input.IsActionPressed("reload") && !Reloading && CurrentWeapon != null)
-			{
-				Reloading = true;
-				_animation.PlayMontage("Reload_"+CurrentWeapon.Type.ToString());
+					if (Input.IsActionPressed("move_left"))
+					{
+						_velocity.x = -1 * GetCurrentSpeed();
+					}
+
+					else if (!Input.IsActionPressed("move_left") && !Input.IsActionPressed("move_right"))
+					{
+						_velocity.x = 0;
+					}
+
+					if (Input.IsActionPressed("move_jump"))
+					{
+						_jumpButtonDown = true;
+					}
+					else
+					{
+						_jumpButtonDown = false;
+					}
+				}
+				else
+				{
+					_velocity.x = 0;
+				}
+
+
+				if (Input.IsActionPressed("shoot"))
+				{
+					CurrentWeapon?.Shoot(
+						new Vector2
+						(
+							(_animation.BulletSpawnPosition.Position.x * (_isLookingLeft ? 1 : -1)) + Position.x,
+							_animation.BulletSpawnPosition.Position.y + Position.y
+						),
+						0,
+						_isLookingLeft);
+				}
+
+				if (Input.IsActionPressed("reload") && !Reloading && CurrentWeapon != null)
+				{
+					Reloading = true;
+					_animation.PlayMontage("Reload_" + CurrentWeapon.Type.ToString());
+				}
+				else if (Input.IsActionPressed("reload"))
+				{
+					GD.Print("Reloading: " + Reloading.ToString());
+				}
+
+
+				isRunning = Input.IsActionPressed("move_run");
 			}
-			else if(Input.IsActionPressed("reload"))
-			{
-				GD.Print("Reloading: " + Reloading.ToString());
-			}
-			
-			
-			isRunning = Input.IsActionPressed("move_run");
 		}
 
 		public override void _Input(InputEvent @event)

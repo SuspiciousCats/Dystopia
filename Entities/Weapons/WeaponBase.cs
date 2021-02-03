@@ -32,11 +32,11 @@ namespace Dystopia.Entities.Weapons
 
 		[Export(PropertyHint.Enum)] public WeaponType Type;
 
-		protected int CurrentAmmoInTheClip = 5;
+		public int CurrentAmmoInTheClip = 5;
 
 		public Character OwningCharacter;
 
-		protected Timer CooldownTimer;
+		public Timer CooldownTimer;
 
 		protected AudioStreamPlayer2D FireSoundPlayer;
 

@@ -178,9 +178,9 @@ namespace Dystopia.Entities.AI
 				
 				if (result != null && result["collider"] != null)
 				{
-					if (result["collider"] is Character)
+					if (result["collider"] is Character character)
 					{
-						return true;
+						return !character.Crouching;
 					}
 				}
 			}
@@ -204,14 +204,22 @@ namespace Dystopia.Entities.AI
 			{
 				if (_weapon != null)
 				{
-					_weapon.Shoot(
-						new Vector2
-						(
-							(_animation.BulletSpawnPosition.Position.x * (_isLookingLeft ? 1 : -1)) + Position.x,
-							_animation.BulletSpawnPosition.Position.y + Position.y
-						),
-						0,
-						_isLookingLeft);
+					if (_weapon.CanShoot())
+					{
+						_weapon.Shoot(
+							new Vector2
+							(
+								(_animation.BulletSpawnPosition.Position.x * (_isLookingLeft ? 1 : -1)) + Position.x,
+								_animation.BulletSpawnPosition.Position.y + Position.y
+							),
+							0,
+							_isLookingLeft);
+					}
+					else if (_weapon.CurrentAmmoInTheClip == 0 && !Reloading)
+					{
+						Reloading = true;
+						_animation.PlayMontage("Reload_" + CurrentWeapon.Type.ToString());
+					}
 				}
 			}
 
@@ -270,7 +278,34 @@ namespace Dystopia.Entities.AI
 		{
 			WallInterceptionCount--;
 		}
+
+		private void _on_Animation_OnMontageFinished(string montageName)
+		{
+			
+			if (CurrentWeapon != null)
+			{
+				if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+				{
+					Reloading = false;
+					CurrentWeapon.Reload();
+				}
+			}
+		}
+
+		private void _on_Animation_OnMontageInterrupted(string montageName, int currentFrame)
+		{
+			if (CurrentWeapon != null)
+			{
+				if (montageName == ("Reload_" + CurrentWeapon.Type.ToString()) && Reloading)
+				{
+					Reloading = false;
+				}
+			}
+		}
 	}
 }
+
+
+
 
 

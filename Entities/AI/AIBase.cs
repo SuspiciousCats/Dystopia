@@ -1,3 +1,4 @@
+using System.Security.Policy;
 using Godot;
 using Godot.Collections;
 
@@ -25,6 +26,9 @@ namespace Dystopia.Entities.AI
 
 		[Export()] public bool DoDebugOutput = false;
 
+		//To make fights more fair ai will give player some time to react to being seen
+		[Export()] public float WaitTimeBeforeShooting = 1;
+
 		protected bool IsWaiting = false;
 		
 		/*used for primitive path finding
@@ -46,6 +50,10 @@ namespace Dystopia.Entities.AI
 		private Character Target;
 
 		private Timer WaitTimer;
+
+		private Timer _beforeShootingWaitTimer = new Timer();
+
+		private bool _shouldShoot = false;
 		
 		protected int FloorInterceptionCount = 0;
 
@@ -83,6 +91,9 @@ namespace Dystopia.Entities.AI
 				FindNode("WallDetect_ColorRect").QueueFree();
 				FindNode("FloorDetect_ColorRect").QueueFree();
 			}
+
+			_beforeShootingWaitTimer.Connect("timeout", this, "StartShooting");
+			AddChild(_beforeShootingWaitTimer);
 		}
 
 		public bool CanWalkForward()
@@ -180,7 +191,7 @@ namespace Dystopia.Entities.AI
 				{
 					if (result["collider"] is Character character)
 					{
-						return !character.Crouching;
+						return true;
 					}
 				}
 			}
@@ -198,11 +209,9 @@ namespace Dystopia.Entities.AI
 				GetTarget(senced);
 			}
 
-			
-			
-			if (Target != null && !Target.Dead && CanActuallySeeTarget())
+			if (Target != null && !Target.Dead && CanActuallySeeTarget() && !Target.Crouching)
 			{
-				if (_weapon != null)
+				if (_weapon != null && _shouldShoot)
 				{
 					if (_weapon.CanShoot())
 					{
@@ -221,9 +230,30 @@ namespace Dystopia.Entities.AI
 						_animation.PlayMontage("Reload_" + CurrentWeapon.Type.ToString());
 					}
 				}
+				
+			}
+			else if (Target != null && !Target.Dead && _weapon != null)
+			{
+				if (_beforeShootingWaitTimer.IsStopped() && !_shouldShoot)
+				{
+					GD.Print("jkjk");
+					_beforeShootingWaitTimer.WaitTime = WaitTimeBeforeShooting;
+					_beforeShootingWaitTimer.Start();
+				}
+			}
+			else
+			{
+				_shouldShoot = false;
+				_beforeShootingWaitTimer.Stop();
 			}
 
 			UpdateAiMovement();
+		}
+
+		private void StartShooting()
+		{
+			_shouldShoot = true;
+			_beforeShootingWaitTimer.Stop();
 		}
 
 		public virtual void TargetFound()
@@ -243,6 +273,15 @@ namespace Dystopia.Entities.AI
 			if (SenseArea != null && !Dead)
 			{
 				UpdateAI();
+			}
+
+			if (!_beforeShootingWaitTimer.IsStopped())
+			{
+				Crouching = _beforeShootingWaitTimer?.WaitTime > WaitTimeBeforeShooting * 0.6f;
+			}
+			else
+			{
+				Crouching = false;
 			}
 		}
 
